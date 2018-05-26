@@ -62,6 +62,9 @@ public class JoinActivity extends AppCompatActivity {
         editTextname=(EditText)findViewById(R.id.join_editText_name);
         editTextGoal=(EditText)findViewById(R.id.join_editText_goal);
         buttonJoin=(Button)findViewById(R.id.join_button_join);
+
+        buttonJoin.setEnabled(false);
+
         buttonCheckPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +76,7 @@ public class JoinActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(mContext, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                    buttonJoin.setEnabled(false);   //버튼 비활성화
+                       //버튼 비활성화
                 }
             }
         });
@@ -87,7 +90,20 @@ public class JoinActivity extends AppCompatActivity {
                 String name=editTextname.getText().toString();
                 String goal=editTextGoal.getText().toString();
                 //String tid
-                createUser(email, passwd, goal, name);
+                if(email.equals(""))
+                    Toast.makeText(mContext, "이메일을 입력해주세요.",
+                            Toast.LENGTH_SHORT).show();
+                else if(passwd.equals(""))
+                    Toast.makeText(mContext, "비밀번호를 입력해주세요.",
+                            Toast.LENGTH_SHORT).show();
+                else if(name.equals(""))
+                    Toast.makeText(mContext, "이름을 입력해주세요.",
+
+                            Toast.LENGTH_SHORT).show();
+                else {
+                    createUser(email, passwd, goal, name);
+                    finish();
+                }
             }
         });
     }

@@ -40,8 +40,6 @@
         android:layout_alignLeft="@+id/textView9" />
 
 
-    a
-
     <TextView
         android:id="@+id/textView8"
         android:layout_width="60dp"
