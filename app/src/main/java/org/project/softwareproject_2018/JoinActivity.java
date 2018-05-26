@@ -102,7 +102,6 @@ public class JoinActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 else {
                     createUser(email, passwd, goal, name);
-                    finish();
                 }
             }
         });
@@ -125,7 +124,7 @@ public class JoinActivity extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             writeNewUser(user.getUid(), name, email, goal);
-                            Toast.makeText(mContext, "회원가입 완료", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(mContext, "회원가입 완료", Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -158,9 +157,10 @@ public class JoinActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            Toast.makeText(this, "user!=null >>  성공", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+            finish();
         } else {
-            Toast.makeText(this, "user==null >> 실패", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show();
         }
     }
 
