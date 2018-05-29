@@ -1,346 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <ImageView
+        android:id="@+id/t1_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/trainer_one"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <ImageView
+        android:id="@+id/t2_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:src="@drawable/trainer_one"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <ImageView
+        android:id="@+id/t3_image"
+        android:layout_width="62dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/trainer_one"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="59dp" />
+
+    <ImageView
+        android:id="@+id/t4_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/trainer_one"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+    <ImageView
+        android:id="@+id/t5_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/trainer_one"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+
+    <RadioGroup
+        android:id="@+id/button_group"
+        android:layout_width="382dp"
+        android:layout_height="34dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="347dp">
+
+        <RadioButton
+            android:id="@+id/t1_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:text="t1" />
+
+        <RadioButton
+            android:id="@+id/t2_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:text="t2" />
+
+        <RadioButton
+            android:id="@+id/t3_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="t3" />
+
+        <RadioButton
+            android:id="@+id/t4_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="t4" />
+
+        <RadioButton
+            android:id="@+id/t5_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:text="t5" />
+
     </RadioGroup>
 
-    <RadioButton
-        android:id="@+id/trainerInquireUI_radioButton_selectTrainer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/trainerInquireUI_radioButton_selectTrainer4"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="1"
-        android:text=""
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-    <RadioButton
-        android:id="@+id/trainerInquireUI_radioButton_selectTrainer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/trainerInquireUI_radioButton_selectTrainer3"
-        android:layout_centerHorizontal="true"
-        android:layout_weight="1"
-        android:text=""
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="425dp" />
-
-    <RadioButton
-        android:id="@+id/trainerInquireUI_radioButton_selectTrainer3"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/trainerInquireUI_textView_type4"
-        android:layout_below="@+id/trainerInquireUI_textView_type4"
-        android:layout_weight="1"
-        android:text=""
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-
-    <RadioButton
-        android:id="@+id/trainerInquireUI_radioButton_selectTrainer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/trainerInquireUI_textView_type3"
-        android:layout_below="@+id/trainerInquireUI_radioButton_selectTrainer1"
-        android:layout_weight="1"
-        android:text=""
-        tools:ignore="MissingConstraints,RtlCompat,margin"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="224dp" />
-
-    <RadioButton
-        android:id="@+id/trainerInquireUI_radioButton_selectTrainer5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/trainerInquireUI_textView_type1"
-        android:layout_marginEnd="54dp"
-        android:layout_weight="1"
-        android:text=""
-        tools:ignore="MissingConstraints,margin"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="425dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="54dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_name1"
-        android:layout_width="107dp"
-        android:layout_height="27dp"
-        android:layout_below="@+id/trainerInquireUI_imageView_image4"
-        android:layout_marginTop="-113dp"
-        android:layout_toEndOf="@+id/trainerInquireUI_textView_name2"
-        android:text="이름"
-        tools:ignore="MissingConstraints,RtlCompat,margin"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="375dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_name2"
-        android:layout_width="107dp"
-        android:layout_height="27dp"
-        android:layout_alignStart="@+id/trainerInquireUI_textView_name3"
-        android:layout_below="@+id/trainerInquireUI_imageView_image4"
-        android:layout_marginTop="-113dp"
-        android:text="이름"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="375dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_name3"
-        android:layout_width="107dp"
-        android:layout_height="27dp"
-        android:layout_alignTop="@+id/trainerInquireUI_textView_name4"
-        android:layout_toStartOf="@+id/trainerInquireUI_textView_name5"
-        android:text="이름"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="172dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_name4"
-        android:layout_width="107dp"
-        android:layout_height="27dp"
-        android:layout_alignTop="@+id/trainerInquireUI_textView_name5"
-        android:layout_toEndOf="@+id/trainerInquireUI_textView_name5"
-        android:text="이름"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="172dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_name5"
-        android:layout_width="107dp"
-        android:layout_height="27dp"
-        android:layout_alignStart="@+id/trainerInquireUI_imageView_image1"
-        android:layout_below="@+id/trainerInquireUI_imageView_image1"
-        android:text="이름"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="172dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_imageView_image1"
-        android:layout_width="107dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/trainerInquireUI_imageView_image2"
-        android:layout_toStartOf="@+id/trainerInquireUI_imageView_image2"
-        android:text="사진"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="72dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_imageView_image2"
-        android:layout_width="107dp"
-        android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="21dp"
-        android:layout_marginTop="80dp"
-        android:text="사진"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="275dp"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_imageView_image3"
-        android:layout_width="107dp"
-        android:layout_height="100dp"
-        android:layout_alignTop="@+id/trainerInquireUI_imageView_image1"
-        android:layout_toStartOf="@+id/trainerInquireUI_imageView_image1"
-        android:text="사진"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="275dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_imageView_image4"
-        android:layout_width="107dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="113dp"
-        android:layout_toStartOf="@+id/trainerInquireUI_imageView_image1"
-        android:text="사진"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="72dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_imageView_image5"
-        android:layout_width="107dp"
-        android:layout_height="100dp"
-        android:layout_alignStart="@+id/trainerInquireUI_imageView_image1"
-        android:layout_alignTop="@+id/trainerInquireUI_imageView_image4"
-        android:text="사진"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="72dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_type1"
-        android:layout_width="75dp"
-        android:layout_height="23dp"
-        android:layout_alignEnd="@+id/trainerInquireUI_imageView_image2"
-        android:layout_below="@+id/trainerInquireUI_textView_name5"
-        android:text="상/중/하"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="402dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_type2"
-        android:layout_width="75dp"
-        android:layout_height="23dp"
-        android:layout_below="@+id/trainerInquireUI_textView_name2"
-        android:layout_toStartOf="@+id/trainerInquireUI_textView_name4"
-        android:text="상/중/하"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="402dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_type3"
-        android:layout_width="75dp"
-        android:layout_height="23dp"
-        android:layout_alignEnd="@+id/trainerInquireUI_textView_name2"
-        android:layout_below="@+id/trainerInquireUI_textView_name2"
-        android:text="상/중/하"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_type4"
-        android:layout_width="75dp"
-        android:layout_height="23dp"
-        android:layout_below="@+id/trainerInquireUI_textView_name5"
-        android:layout_toStartOf="@+id/trainerInquireUI_textView_name5"
-        android:text="상/중/하"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_type5"
-        android:layout_width="75dp"
-        android:layout_height="23dp"
-        android:layout_alignEnd="@+id/trainerInquireUI_textView_name5"
-        android:layout_below="@+id/trainerInquireUI_textView_name5"
-        android:text="상/중/하"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_labelType1"
-        android:layout_width="32dp"
-        android:layout_height="23dp"
-        android:layout_above="@+id/trainerInquireUI_radioButton_selectTrainer2"
-        android:layout_toStartOf="@+id/trainerInquireUI_radioButton_selectTrainer3"
-        android:text="강도"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="402dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_labelType2"
-        android:layout_width="32dp"
-        android:layout_height="23dp"
-        android:layout_above="@+id/trainerInquireUI_radioButton_selectTrainer1"
-        android:layout_toStartOf="@+id/trainerInquireUI_radioButton_selectTrainer3"
-        android:text="강도"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="402dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_labelType3"
-        android:layout_width="32dp"
-        android:layout_height="23dp"
-        android:layout_above="@+id/trainerInquireUI_radioButton_selectTrainer4"
-        android:layout_alignStart="@+id/trainerInquireUI_textView_name1"
-        android:text="강도"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_labelType4"
-        android:layout_width="32dp"
-        android:layout_height="23dp"
-        android:layout_above="@+id/trainerInquireUI_radioButton_selectTrainer5"
-        android:layout_toEndOf="@+id/trainerInquireUI_textView_name1"
-        android:text="강도"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-    <TextView
-        android:id="@+id/trainerInquireUI_textView_labelType5"
-        android:layout_width="32dp"
-        android:layout_height="23dp"
-        android:layout_above="@+id/trainerInquireUI_radioButton_selectTrainer5"
-        android:layout_alignStart="@+id/trainerInquireUI_textView_name1"
-        android:text="강도"
-        tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-
     <Button
-        android:id="@+id/trainerInquireUI_button_check"
+        android:id="@+id/button_join"
         android:layout_width="60dp"
         android:layout_height="41dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/trainerInquireUI_imageView_image4"
-        android:layout_marginEnd="39dp"
+        android:layout_alignParentBottom="true"
         android:text="확인"
         tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="321dp" />
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="415dp" />
 
     <Button
-        android:id="@+id/trainerInquireUI_button_cancel"
-        android:layout_width="60dp"
-        android:layout_height="41dp"
-        android:layout_alignEnd="@+id/trainerInquireUI_button_check"
+        android:id="@+id/button_cancel"
+        android:layout_width="62dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
         android:text="취소"
         tools:ignore="MissingConstraints,RtlCompat"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="375dp" />
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="416dp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/t1_name"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:text="이름"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <TextView
+        android:id="@+id/t2_name"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:text="이름"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <TextView
+        android:id="@+id/t3_name"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+
+        android:text="이름"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="259dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/t4_name"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:text="이름"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="119dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/t5_name"
+        android:layout_width="58dp"
+        android:layout_height="20dp"
+        android:text="이름"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="259dp"
+        tools:ignore="MissingConstraints"/>
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강도"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강도"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강도"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강도"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강도"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <TextView
+        android:id="@+id/t1_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상중하"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <TextView
+        android:id="@+id/t2_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상중하"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/t3_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상중하"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+    <TextView
+        android:id="@+id/t4_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상중하"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="278dp" />
+
+    <TextView
+        android:id="@+id/t5_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상중하"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="138dp" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>
