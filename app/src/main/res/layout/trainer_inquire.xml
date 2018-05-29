@@ -136,7 +136,7 @@
         android:layout_width="107dp"
         android:layout_height="27dp"
         android:layout_alignStart="@+id/trainerInquireUI_imageView_image1"
-        android:layout_below="@+id/TrainerInquireUI_imageView_image1"
+        android:layout_below="@+id/trainerInquireUI_imageView_image1"
         android:text="이름"
         tools:ignore="MissingConstraints,RtlCompat"
         tools:layout_editor_absoluteX="246dp"
