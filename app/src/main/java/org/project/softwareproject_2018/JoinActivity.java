@@ -1,6 +1,7 @@
 package org.project.softwareproject_2018;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class JoinActivity extends AppCompatActivity {
     //TAG
     private static final String TAG = JoinActivity.class.getSimpleName();
+    static final int REQ_ADD_CONTACT = 1 ;
 
     //UI
     private EditText editTextEmail;
@@ -34,6 +37,7 @@ public class JoinActivity extends AppCompatActivity {
     private EditText editTextname;
     private Button buttonCheckPW;
     private Button buttonJoin;
+    private Button buttontrainer;
 
 
     //Firebase
@@ -62,6 +66,7 @@ public class JoinActivity extends AppCompatActivity {
         editTextname=(EditText)findViewById(R.id.join_editText_name);
         editTextGoal=(EditText)findViewById(R.id.join_editText_goal);
         buttonJoin=(Button)findViewById(R.id.join_button_join);
+        buttontrainer=(Button)findViewById(R.id.join_button_trainer);
 
         buttonJoin.setEnabled(false);
 
@@ -78,6 +83,14 @@ public class JoinActivity extends AppCompatActivity {
                     Toast.makeText(mContext, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                        //버튼 비활성화
                 }
+            }
+        });
+
+        buttontrainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(JoinActivity.this, TrainerInquireActivity.class);
+                startActivityForResult(intent, REQ_ADD_CONTACT);
             }
         });
 
@@ -106,6 +119,20 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    //트레이너 선택 창에서 선택한 트레이너 반환-표시
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQ_ADD_CONTACT) {
+            if (resultCode == RESULT_OK) {
+
+                TextView textViewName = (TextView) findViewById(R.id.join_selected_trainer) ;
+                String trainer = intent.getStringExtra("contact_trainer") ;
+                textViewName.setText(trainer) ;
+            }
+        }
+    }
+
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
