@@ -25,46 +25,6 @@
         {
           "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",
           "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC1W6UMgw60o6pBj3OsvODsWlJvCHKBeLw"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:620441827920:android:a10a278c9d882724",
-        "android_client_info": {
-          "package_name": "org.project.firebaseEX"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "620441827920-o8ksf0upl4um6dhjpuf4048jt0009pd9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "org.project.firebaseEX",
-            "certificate_hash": "55c9cbcd5a3333d0d23651fdbca5c77a0b057516"
-          }
         },
         {
           "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",
@@ -113,46 +73,6 @@
         {
           "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",
           "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC1W6UMgw60o6pBj3OsvODsWlJvCHKBeLw"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:620441827920:android:5bc632872a993ccc",
-        "android_client_info": {
-          "package_name": "org.project.testapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "620441827920-h4vcbvbskfb2lf5acn5n7a6nolvukhgh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "org.project.testapp",
-            "certificate_hash": "55c9cbcd5a3333d0d23651fdbca5c77a0b057516"
-          }
         },
         {
           "client_id": "620441827920-r81qi1be5cvi9ctvivmt6u6e3ed6nc7j.apps.googleusercontent.com",

@@ -101,4 +101,7 @@ public class customerMainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void logoutUser(){
+        FirebaseAuth.getInstance().signOut();
+    }
 }
