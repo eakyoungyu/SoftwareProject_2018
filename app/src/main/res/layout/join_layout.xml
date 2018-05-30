@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
     <TextView
@@ -32,24 +31,24 @@
         android:id="@+id/textView10"
         android:layout_width="50dp"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_password"
         android:text="PW"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="125dp"
-        android:layout_alignLeft="@+id/textView9" />
+        tools:layout_editor_absoluteY="125dp" />
 
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="60dp"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_password_check"
         android:text="PW확인"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="175dp"
-        android:layout_alignLeft="@+id/textView9" />
+        tools:layout_editor_absoluteY="175dp" />
 
 
     <EditText
@@ -92,12 +91,12 @@
         android:id="@+id/textView11"
         android:layout_width="50dp"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:layout_centerVertical="true"
         android:text="이름"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="245dp"
-        android:layout_alignLeft="@+id/textView9" />
+        tools:layout_editor_absoluteY="245dp" />
 
     <EditText
         android:id="@+id/join_editText_name"
@@ -114,12 +113,12 @@
         android:id="@+id/textView12"
         android:layout_width="50dp"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_goal"
         android:text="목표"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="295dp"
-        android:layout_alignLeft="@+id/textView9" />
+        tools:layout_editor_absoluteY="295dp" />
 
     <EditText
         android:id="@+id/join_editText_goal"
@@ -138,11 +137,11 @@
         android:layout_width="60dp"
         android:layout_height="30dp"
         android:layout_alignBottom="@+id/join_button_trainer"
+        android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:text="트레이너"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="345dp"
-        android:layout_alignLeft="@+id/textView9" />
+        tools:layout_editor_absoluteY="345dp" />
 
     <Button
         android:id="@+id/join_button_trainer"
@@ -170,10 +169,19 @@
         android:id="@+id/textView14"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
-        android:text="Welcome!" />
+        android:text="Welcome!"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/join_selected_trainer"
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView13"
+        android:layout_marginEnd="89dp"
+        android:text="-" />
 
 </RelativeLayout>
