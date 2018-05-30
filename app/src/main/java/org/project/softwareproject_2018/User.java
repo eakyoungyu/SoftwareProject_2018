@@ -8,15 +8,17 @@ public class User {
     //private으로 member 선언시 DB접근 오류
     protected String email;
     //    protected String password;
-    protected String goal;
     protected String name;
-//    protected String tid;
+    protected String uid;
 
 
-    public User(String name, String email, String goal) {
+    public User(String name, String email, String uid) {
         this.name = name;
         this.email = email;
-        this.goal=goal;
-        //   this.tid=tid;
+        this.uid=uid;
+    }
+    public User(String name, String email){
+        this.name = name;
+        this.email = email;
     }
 }

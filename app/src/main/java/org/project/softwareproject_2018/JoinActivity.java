@@ -102,7 +102,7 @@ public class JoinActivity extends AppCompatActivity {
                 String passwd=editTextPassword.getText().toString();
                 String name=editTextname.getText().toString();
                 String goal=editTextGoal.getText().toString();
-                //String tid
+                String tid="";
                 if(email.equals(""))
                     Toast.makeText(mContext, "이메일을 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
@@ -114,7 +114,7 @@ public class JoinActivity extends AppCompatActivity {
 
                             Toast.LENGTH_SHORT).show();
                 else {
-                    createUser(email, passwd, goal, name);
+                    createUser(email, passwd, goal, name, tid);
                 }
             }
         });
@@ -140,7 +140,7 @@ public class JoinActivity extends AppCompatActivity {
         //updateUI(currentUser);
     }
 
-    public void createUser(final String email, final String password, final String goal, final String name){
+    public void createUser(final String email, final String password, final String goal, final String name, final String tid){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -150,7 +150,7 @@ public class JoinActivity extends AppCompatActivity {
                             Log.d(TAG, "createUserWithEmail:success");
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            writeNewUser(user.getUid(), name, email, goal);
+                            writeNewUser(user.getUid(), name, email, goal, tid);
                             //Toast.makeText(mContext, "회원가입 완료", Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
@@ -191,8 +191,12 @@ public class JoinActivity extends AppCompatActivity {
         }
     }
 
-    private void writeNewUser(String userId, String name, String email, String goal) {
+    private void writeNewUser(String userId, String name, String email, String goal, String tid) {
+        /*
         User user = new User(name, email, goal);
         mDatabase.child("users").child(userId).setValue(user);
+        */
+        Customer customer = new Customer(name, email, goal, tid);
+        mDatabase.child("users").child(userId).setValue(customer);
     }
 }

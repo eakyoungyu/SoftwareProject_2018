@@ -2,7 +2,9 @@ package org.project.softwareproject_2018;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,15 +13,29 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrainerInquireActivity extends AppCompatActivity {
+
+
+    //Firebase
+    private DatabaseReference mDatabase;
+    private FirebaseStorage storage;
+    private StorageReference gsReference;
+    private StorageReference pathReference;
+    private Uri retUri;
+    private Uri tUri;
 
     private RadioGroup radioGroup;
 
@@ -47,12 +63,20 @@ public class TrainerInquireActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     Context mContext;
 
-    private List<Trainer> trainers = new ArrayList<>();
+    private ArrayList<Trainer> trainers = new ArrayList<Trainer>();
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trainer_inquire);
+
+        //image URI
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        storage = FirebaseStorage.getInstance();
+
+
+        imageViewTrainer1=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image1);
+        imageViewTrainer1.setImageURI(tUri);
 
         textViewName1=(TextView)findViewById(R.id.trainerInquireUI_textView_name1);
         textViewName2=(TextView)findViewById(R.id.trainerInquireUI_textView_name2);
@@ -66,16 +90,36 @@ public class TrainerInquireActivity extends AppCompatActivity {
         textViewType4=(TextView)findViewById(R.id.trainerInquireUI_textView_type4);
         textViewType5=(TextView)findViewById(R.id.trainerInquireUI_textView_type5);
 
-        /*
-        database = FirebaseDatabase.getInstance();
 
-        database.getReference().child("trainer").addValueEventListener(new ValueEventListener() {
+
+        database = FirebaseDatabase.getInstance();
+        Query getTrainerData = database.getReference().child("trainer");
+        getTrainerData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                trainers.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Trainer trainer = snapshot.getValue(Trainer.class);
+                    String uid=snapshot.getKey();
+                    String email=snapshot.child("email").getValue(String.class);
+                    String image=snapshot.child("image").getValue(String.class);    //path
+                    String name=snapshot.child("name").getValue(String.class);
+                    String type=snapshot.child("type").getValue(String.class);
+                    Trainer trainer=new Trainer(uid, email, image, name, type);
                     trainers.add(trainer);
                 }
+                //Toast message 출력하면 오류
+                textViewName1.setText(trainers.get(0).name);
+                textViewType1.setText(trainers.get(0).type);
+                textViewName2.setText(trainers.get(1).name);
+                textViewType2.setText(trainers.get(1).type);
+                textViewName3.setText(trainers.get(2).name);
+                textViewType3.setText(trainers.get(2).type);
+                textViewName4.setText(trainers.get(3).name);
+                textViewType4.setText(trainers.get(3).type);
+                textViewName5.setText(trainers.get(4).name);
+                textViewType5.setText(trainers.get(4).type);
+
+                tUri=getUri(trainers.get(0).image);     //uri
             }
 
             @Override
@@ -84,29 +128,6 @@ public class TrainerInquireActivity extends AppCompatActivity {
             }
         });
 
-        textViewName1.setText(trainers.get(0).name);
-        textViewType1.setText(trainers.get(0).type);
-        textViewName2.setText(trainers.get(1).name);
-        textViewType2.setText(trainers.get(1).type);
-        textViewName3.setText(trainers.get(2).name);
-        textViewType3.setText(trainers.get(2).type);
-        textViewName4.setText(trainers.get(3).name);
-        textViewType4.setText(trainers.get(3).type);
-        textViewName5.setText(trainers.get(4).name);
-        textViewType5.setText(trainers.get(4).type);
-
-        */
-
-        textViewName1.setText("1번");
-        textViewType1.setText("상");
-        textViewName2.setText("2번");
-        textViewType2.setText("중");
-        textViewName3.setText("3번");
-        textViewType3.setText("하");
-        textViewName4.setText("4번");
-        textViewType4.setText("중");
-        textViewName5.setText("5번");
-        textViewType5.setText("상");
 
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
         buttonCheck=(Button)findViewById(R.id.trainerInquireUI_button_check);
@@ -157,5 +178,22 @@ public class TrainerInquireActivity extends AppCompatActivity {
         });
 
 
+    }
+    public Uri getUri(String path){
+        gsReference = storage.getReferenceFromUrl("gs://temp-30f22.appspot.com");
+        pathReference = gsReference.child(path);
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                retUri= uri;
+                //Toast.makeText(getApplicationContext(), "다운로드 성공 : "+ tUri, Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(getApplicationContext(), "다운로드 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return retUri;
     }
 }

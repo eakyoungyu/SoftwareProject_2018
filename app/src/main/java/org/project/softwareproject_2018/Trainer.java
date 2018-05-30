@@ -1,15 +1,15 @@
 package org.project.softwareproject_2018;
 
-import android.media.Image;
-
-public class Trainer {
-    protected String name;
+public class Trainer extends User {
+    protected String image;   //경로 저장
     protected String type;
-    //protected Image picture;
 
-    public Trainer(String name, String type) {
-        this.name = name;
+    public Trainer(String uid, String email, String image, String name, String type) {
+        super(name, email, uid);
+    //    this.uid=uid;
+    //    this.email=email;
+        this.image= image;
+    //    this.name = name;
         this.type = type;
-        //this.picture= picture;
     }
 }

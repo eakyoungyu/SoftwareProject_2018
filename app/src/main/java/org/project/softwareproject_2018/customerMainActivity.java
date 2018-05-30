@@ -30,6 +30,7 @@ public class customerMainActivity extends AppCompatActivity
         setContentView(R.layout.customer_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
+
         setSupportActionBar(toolbar);
 
 
@@ -42,6 +43,7 @@ public class customerMainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
+
 
         nameTextView = (TextView)view.findViewById(R.id.header_name_textview);
         trainerTextView = (TextView)view.findViewById(R.id.header_trainer_textView);
