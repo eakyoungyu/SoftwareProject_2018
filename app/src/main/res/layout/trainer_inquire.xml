@@ -4,12 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,14 +48,13 @@
                             android:text="상/중/하" />
                     </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/trainerInquireUI_radioButton_selectTrainer1"
+                    <Button
+                        android:id="@+id/trainerInquireUI_Button_selectTrainer1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -99,14 +92,13 @@
                             android:text="상/중/하" />
                     </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/trainerInquireUI_radioButton_selectTrainer2"
+                    <Button
+                        android:id="@+id/trainerInquireUI_Button_selectTrainer2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -145,14 +137,13 @@
                             android:text="상/중/하" />
                     </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/trainerInquireUI_radioButton_selectTrainer3"
+                    <Button
+                        android:id="@+id/trainerInquireUI_Button_selectTrainer3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:text="선택"/>
 
                 </LinearLayout>
             </TableRow>
@@ -196,14 +187,13 @@
                             android:text="상/중/하" />
                     </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/trainerInquireUI_radioButton_selectTrainer4"
+                    <Button
+                        android:id="@+id/trainerInquireUI_Button_selectTrainer4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -242,14 +232,13 @@
                             android:text="상/중/하" />
                     </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/trainerInquireUI_radioButton_selectTrainer5"
+                    <Button
+                        android:id="@+id/trainerInquireUI_Button_selectTrainer5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -260,11 +249,6 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/trainerInquireUI_button_check"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="확인" />
 
                     <Button
                         android:id="@+id/trainerInquireUI_button_cancel"
@@ -274,6 +258,4 @@
                 </LinearLayout>
             </TableRow>
         </TableLayout>
-    </RadioGroup>
-
 </RelativeLayout>

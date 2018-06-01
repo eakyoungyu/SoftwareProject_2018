@@ -38,6 +38,7 @@ public class JoinActivity extends AppCompatActivity {
     private Button buttonCheckPW;
     private Button buttonJoin;
     private Button buttontrainer;
+    private TextView textViewTrainer;
 
 
     //Firebase
@@ -67,6 +68,7 @@ public class JoinActivity extends AppCompatActivity {
         editTextGoal=(EditText)findViewById(R.id.join_editText_goal);
         buttonJoin=(Button)findViewById(R.id.join_button_join);
         buttontrainer=(Button)findViewById(R.id.join_button_trainer);
+        textViewTrainer = (TextView) findViewById(R.id.join_selected_trainer) ;
 
         buttonJoin.setEnabled(false);
 
@@ -102,7 +104,7 @@ public class JoinActivity extends AppCompatActivity {
                 String passwd=editTextPassword.getText().toString();
                 String name=editTextname.getText().toString();
                 String goal=editTextGoal.getText().toString();
-                String tid="";
+                String tid=textViewTrainer.getText().toString();
                 if(email.equals(""))
                     Toast.makeText(mContext, "이메일을 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
@@ -111,7 +113,9 @@ public class JoinActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 else if(name.equals(""))
                     Toast.makeText(mContext, "이름을 입력해주세요.",
-
+                            Toast.LENGTH_SHORT).show();
+                else if(tid.equals("-"))
+                    Toast.makeText(mContext, "트레이너를 선택해주세요.",
                             Toast.LENGTH_SHORT).show();
                 else {
                     createUser(email, passwd, goal, name, tid);
@@ -125,10 +129,9 @@ public class JoinActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == REQ_ADD_CONTACT) {
             if (resultCode == RESULT_OK) {
-
-                TextView textViewName = (TextView) findViewById(R.id.join_selected_trainer) ;
+                textViewTrainer = (TextView) findViewById(R.id.join_selected_trainer) ;
                 String trainer = intent.getStringExtra("contact_trainer") ;
-                textViewName.setText(trainer) ;
+                textViewTrainer.setText(trainer) ;
             }
         }
     }

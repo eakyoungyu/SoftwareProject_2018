@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -57,7 +58,12 @@ public class TrainerInquireActivity extends AppCompatActivity {
     private TextView textViewType4;
     private TextView textViewType5;
 
-    private Button buttonCheck;
+    private Button buttonTrainer1;
+    private Button buttonTrainer2;
+    private Button buttonTrainer3;
+    private Button buttonTrainer4;
+    private Button buttonTrainer5;
+
     private Button buttonCancel;
 
     private FirebaseDatabase database;
@@ -90,7 +96,11 @@ public class TrainerInquireActivity extends AppCompatActivity {
         textViewType4=(TextView)findViewById(R.id.trainerInquireUI_textView_type4);
         textViewType5=(TextView)findViewById(R.id.trainerInquireUI_textView_type5);
 
-
+        buttonTrainer1 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer1) ;
+        buttonTrainer2 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer2) ;
+        buttonTrainer3 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer3) ;
+        buttonTrainer4 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer4) ;
+        buttonTrainer5 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer5) ;
 
         database = FirebaseDatabase.getInstance();
         Query getTrainerData = database.getReference().child("trainer");
@@ -120,6 +130,7 @@ public class TrainerInquireActivity extends AppCompatActivity {
                 textViewType5.setText(trainers.get(4).type);
 
                 tUri=getUri(trainers.get(0).image);     //uri
+                Glide.with(TrainerInquireActivity.this).load(tUri).into(imageViewTrainer1);
             }
 
             @Override
@@ -129,44 +140,66 @@ public class TrainerInquireActivity extends AppCompatActivity {
         });
 
 
-        radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
-        buttonCheck=(Button)findViewById(R.id.trainerInquireUI_button_check);
+
         buttonCancel=(Button)findViewById(R.id.trainerInquireUI_button_cancel);
 
-        buttonCheck.setOnClickListener(new View.OnClickListener() {
+        buttonTrainer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
 
-                int selected = radioGroup.getCheckedRadioButtonId();
+                intent.putExtra("contact_trainer", trainers.get(0).uid);
 
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
 
-                if(selected == -1)
-                    //트레이너를 선택하지 않았을 때
-                    Toast.makeText(TrainerInquireActivity.this, "트레이너를 선택해주세요.", Toast.LENGTH_SHORT).show();
-                else {
-                    //트레이너를 선택했을 때
-                    switch (radioGroup.getCheckedRadioButtonId()) {
-                        case R.id.trainerInquireUI_radioButton_selectTrainer1:
-                            intent.putExtra("contact_trainer", textViewName1.getText().toString());
-                            break;
-                        case R.id.trainerInquireUI_radioButton_selectTrainer2:
-                            intent.putExtra("contact_trainer", textViewName2.getText().toString());
-                            break;
-                        case R.id.trainerInquireUI_radioButton_selectTrainer3:
-                            intent.putExtra("contact_trainer", textViewName3.getText().toString());
-                            break;
-                        case R.id.trainerInquireUI_radioButton_selectTrainer4:
-                            intent.putExtra("contact_trainer", textViewName4.getText().toString());
-                            break;
-                        case R.id.trainerInquireUI_radioButton_selectTrainer5:
-                            intent.putExtra("contact_trainer", textViewName5.getText().toString());
-                            break;
-                    }
+        buttonTrainer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
 
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
+                intent.putExtra("contact_trainer", trainers.get(1).uid);
+
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        buttonTrainer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+
+                intent.putExtra("contact_trainer", trainers.get(2).uid);
+
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        buttonTrainer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+
+                intent.putExtra("contact_trainer", trainers.get(3).uid);
+
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        buttonTrainer5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+
+                intent.putExtra("contact_trainer", trainers.get(4).uid);
+
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 

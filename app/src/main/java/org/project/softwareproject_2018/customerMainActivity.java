@@ -1,5 +1,6 @@
 package org.project.softwareproject_2018;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -97,6 +98,12 @@ public class customerMainActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             // Handle the camera action
+        }
+        else if(id == R.id.nav_share){
+            logoutUser();
+            finish();
+            Intent intent = new Intent(customerMainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
