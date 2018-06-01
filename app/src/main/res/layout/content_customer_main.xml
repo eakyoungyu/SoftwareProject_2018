@@ -10,10 +10,11 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,49 +22,21 @@
             android:layout_weight="0">
 
             <Button
-                android:id="@+id/other_rec_button"
-                android:layout_width="114dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="59dp"
-                android:text="다른T와 예약"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                tools:ignore="MissingConstraints,UnknownId" />
-
-            <Button
                 android:id="@+id/rec_button"
-                android:layout_width="61dp"
-                android:layout_height="40dp"
+                android:layout_width="76dp"
+                android:layout_height="39dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="292dp"
                 android:layout_marginTop="59dp"
                 android:text="예약"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/other_rec_button"
-                app:layout_constraintStart_toEndOf="@+id/current_date"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/current_date"
-                android:layout_width="145dp"
-                android:layout_height="44dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="55dp"
-                android:gravity="center"
-                android:text="현재 년/월/일"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
                 tools:ignore="MissingConstraints" />
+
         </android.support.constraint.ConstraintLayout>
 
         <CalendarView
