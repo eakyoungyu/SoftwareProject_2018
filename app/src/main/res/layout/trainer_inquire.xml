@@ -23,7 +23,8 @@
                         android:id="@+id/trainerInquireUI_imageView_image1"
                         android:layout_width="107dp"
                         android:layout_height="100dp"
-                        android:text="사진" />
+                        android:text="사진"
+                        />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_name1"

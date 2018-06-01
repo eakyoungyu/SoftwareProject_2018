@@ -36,33 +36,19 @@ public class TrainerInquireActivity extends AppCompatActivity {
     private StorageReference gsReference;
     private StorageReference pathReference;
     private Uri retUri;
-    private Uri tUri;
 
     private RadioGroup radioGroup;
 
-    private TextView textViewName1;
-    private TextView textViewName2;
-    private TextView textViewName3;
-    private TextView textViewName4;
-    private TextView textViewName5;
-
-    private ImageView imageViewTrainer1;
-    private ImageView imageViewTrainer2;
-    private ImageView imageViewTrainer3;
-    private ImageView imageViewTrainer4;
-    private ImageView imageViewTrainer5;
-
-    private TextView textViewType1;
-    private TextView textViewType2;
-    private TextView textViewType3;
-    private TextView textViewType4;
-    private TextView textViewType5;
+    private ImageView imageViewTrainers[]=new ImageView[5];
+    private TextView textViewNames[]=new TextView[5];
+    private TextView textViewTypes[]=new TextView[5];
 
     private Button buttonTrainer1;
     private Button buttonTrainer2;
     private Button buttonTrainer3;
     private Button buttonTrainer4;
     private Button buttonTrainer5;
+
 
     private Button buttonCancel;
 
@@ -79,22 +65,26 @@ public class TrainerInquireActivity extends AppCompatActivity {
         //image URI
         mDatabase = FirebaseDatabase.getInstance().getReference();
         storage = FirebaseStorage.getInstance();
+        gsReference = storage.getReferenceFromUrl("gs://temp-30f22.appspot.com");
 
 
-        imageViewTrainer1=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image1);
-        imageViewTrainer1.setImageURI(tUri);
+        imageViewTrainers[0]=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image1);
+        imageViewTrainers[1]=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image2);
+        imageViewTrainers[2]=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image3);
+        imageViewTrainers[3]=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image4);
+        imageViewTrainers[4]=(ImageView)findViewById(R.id.trainerInquireUI_imageView_image5);
 
-        textViewName1=(TextView)findViewById(R.id.trainerInquireUI_textView_name1);
-        textViewName2=(TextView)findViewById(R.id.trainerInquireUI_textView_name2);
-        textViewName3=(TextView)findViewById(R.id.trainerInquireUI_textView_name3);
-        textViewName4=(TextView)findViewById(R.id.trainerInquireUI_textView_name4);
-        textViewName5=(TextView)findViewById(R.id.trainerInquireUI_textView_name5);
+        textViewNames[0]=(TextView)findViewById(R.id.trainerInquireUI_textView_name1);
+        textViewNames[1]=(TextView)findViewById(R.id.trainerInquireUI_textView_name2);
+        textViewNames[2]=(TextView)findViewById(R.id.trainerInquireUI_textView_name3);
+        textViewNames[3]=(TextView)findViewById(R.id.trainerInquireUI_textView_name4);
+        textViewNames[4]=(TextView)findViewById(R.id.trainerInquireUI_textView_name5);
 
-        textViewType1=(TextView)findViewById(R.id.trainerInquireUI_textView_type1);
-        textViewType2=(TextView)findViewById(R.id.trainerInquireUI_textView_type2);
-        textViewType3=(TextView)findViewById(R.id.trainerInquireUI_textView_type3);
-        textViewType4=(TextView)findViewById(R.id.trainerInquireUI_textView_type4);
-        textViewType5=(TextView)findViewById(R.id.trainerInquireUI_textView_type5);
+        textViewTypes[0]=(TextView)findViewById(R.id.trainerInquireUI_textView_type1);
+        textViewTypes[1]=(TextView)findViewById(R.id.trainerInquireUI_textView_type2);
+        textViewTypes[2]=(TextView)findViewById(R.id.trainerInquireUI_textView_type3);
+        textViewTypes[3]=(TextView)findViewById(R.id.trainerInquireUI_textView_type4);
+        textViewTypes[4]=(TextView)findViewById(R.id.trainerInquireUI_textView_type5);
 
         buttonTrainer1 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer1) ;
         buttonTrainer2 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer2) ;
@@ -118,19 +108,12 @@ public class TrainerInquireActivity extends AppCompatActivity {
                     trainers.add(trainer);
                 }
                 //Toast message 출력하면 오류
-                textViewName1.setText(trainers.get(0).name);
-                textViewType1.setText(trainers.get(0).type);
-                textViewName2.setText(trainers.get(1).name);
-                textViewType2.setText(trainers.get(1).type);
-                textViewName3.setText(trainers.get(2).name);
-                textViewType3.setText(trainers.get(2).type);
-                textViewName4.setText(trainers.get(3).name);
-                textViewType4.setText(trainers.get(3).type);
-                textViewName5.setText(trainers.get(4).name);
-                textViewType5.setText(trainers.get(4).type);
+                for(int i=0;i<5;i++){
+                    textViewNames[i].setText(trainers.get(i).name);
+                    textViewTypes[i].setText(trainers.get(i).type);
+                    printImage(trainers.get(i).image, i);
+                }
 
-                tUri=getUri(trainers.get(0).image);     //uri
-                Glide.with(TrainerInquireActivity.this).load(tUri).into(imageViewTrainer1);
             }
 
             @Override
@@ -212,13 +195,13 @@ public class TrainerInquireActivity extends AppCompatActivity {
 
 
     }
-    public Uri getUri(String path){
-        gsReference = storage.getReferenceFromUrl("gs://temp-30f22.appspot.com");
+    public void printImage(String path, final int index){
         pathReference = gsReference.child(path);
         pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                retUri= uri;
+                //retUri= uri;
+                updateUI(uri, index);
                 //Toast.makeText(getApplicationContext(), "다운로드 성공 : "+ tUri, Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -227,6 +210,10 @@ public class TrainerInquireActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "다운로드 실패", Toast.LENGTH_SHORT).show();
             }
         });
-        return retUri;
+    }
+    private void updateUI(Uri uri, int index){
+      //  for(int i=0;i<5;i++){
+            Glide.with(TrainerInquireActivity.this).load(uri).into(imageViewTrainers[index]);
+      //  }
     }
 }
