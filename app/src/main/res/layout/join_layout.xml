@@ -110,12 +110,12 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_goal"
-        android:text="목표"
+        android:text="목표체중"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="295dp" />
 

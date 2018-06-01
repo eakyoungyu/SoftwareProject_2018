@@ -11,10 +11,10 @@
         android:id="@+id/change_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cancel_button"
-        android:layout_alignBottom="@+id/cancel_button"
-        android:layout_marginEnd="30dp"
-        android:layout_toStartOf="@+id/cancel_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="46dp"
+        android:layout_marginStart="47dp"
         android:text="예약변경" />
 
     <Button
@@ -22,10 +22,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="46dp"
-        android:text="예약취소"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="46dp" />
+        android:layout_alignTop="@+id/change_button"
+        android:layout_marginEnd="47dp"
+        android:text="예약취소" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="26dp"
+        android:text="예약시간" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:text="트레이너 이름" />
 
 </RelativeLayout>
