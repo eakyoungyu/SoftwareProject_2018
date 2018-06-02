@@ -13,15 +13,20 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class customerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
 
     private TextView nameTextView;
     private TextView trainerTextView;
@@ -29,14 +34,22 @@ public class customerMainActivity extends AppCompatActivity
     private CalendarView calendarView;
 
     private FirebaseAuth auth;
-
+    private DatabaseReference mDatabase;
+    private Customer currentCust;
+    private Trainer currentTrai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+
         auth = FirebaseAuth.getInstance();
+        currentCust=new Customer();
+        currentTrai=new Trainer();
 
         setSupportActionBar(toolbar);
 
@@ -58,9 +71,9 @@ public class customerMainActivity extends AppCompatActivity
 
 
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
-        trainerTextView.setText("트레이너");
         goalTextView.setText("-");
         //메뉴창 고객 이름, 트레이너, 목표 설정
+        getCurrentUserInfo(auth.getCurrentUser().getUid());
 
         calendarView = (CalendarView) findViewById(R.id.calendar);
 
@@ -138,5 +151,50 @@ public class customerMainActivity extends AppCompatActivity
     }
     public void logoutUser(){
         FirebaseAuth.getInstance().signOut();
+    }
+    public void getCurrentUserInfo(final String uid){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("customers").child(uid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.exists()){
+                            mDatabase.child("trainers").child(uid).addListenerForSingleValueEvent(
+                                    new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            currentTrai.name = dataSnapshot.child("name").getValue(String.class);
+                                            updateUI("Trainer");
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    }
+                            );
+                        }else {
+                            currentCust.name = dataSnapshot.child("name").getValue(String.class);
+                            currentCust.goal = dataSnapshot.child("goal").getValue(String.class);
+                            updateUI("Customer");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
+    }
+    private void updateUI(String user){
+        if(user=="Customer") {
+            trainerTextView.setText("고객: " +currentCust.name);
+            goalTextView.setText(currentCust.goal);
+        }
+        if(user=="Trainer"){
+            trainerTextView.setText("트레이너: " +currentTrai.name);
+            //나의 정보 버튼 없애기
+        }
     }
 }
