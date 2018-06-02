@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -77,7 +79,9 @@ public class JoinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String passwd=editTextPassword.getText().toString();
                 String chk=editTextpwcheck.getText().toString();
-                if(passwd.equals(chk)){
+                if(passwd.equals(""))
+                    Toast.makeText(mContext, "비밀번호를 입력해주세요.",Toast.LENGTH_SHORT).show();
+                else if(passwd.equals(chk)){
                     Toast.makeText(mContext, "비밀번호가 일치합니다.", Toast.LENGTH_SHORT).show();
                     buttonJoin.setEnabled(true);
                 }
@@ -108,9 +112,6 @@ public class JoinActivity extends AppCompatActivity {
                 if(email.equals(""))
                     Toast.makeText(mContext, "이메일을 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
-                else if(passwd.equals(""))
-                    Toast.makeText(mContext, "비밀번호를 입력해주세요.",
-                            Toast.LENGTH_SHORT).show();
                 else if(name.equals(""))
                     Toast.makeText(mContext, "이름을 입력해주세요.",
                             Toast.LENGTH_SHORT).show();
@@ -120,6 +121,36 @@ public class JoinActivity extends AppCompatActivity {
                 else {
                     createUser(email, passwd, goal, name, tid);
                 }
+            }
+        });
+
+        editTextPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                buttonJoin.setEnabled(false);
+            }
+        });
+
+        editTextpwcheck.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                buttonJoin.setEnabled(false);
             }
         });
     }
@@ -166,6 +197,7 @@ public class JoinActivity extends AppCompatActivity {
                     }
                 });
     }
+
     //menu에서 사용
     private void getCurrentUser(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

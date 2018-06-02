@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,6 +23,7 @@ public class customerMainActivity extends AppCompatActivity
     private TextView nameTextView;
     private TextView trainerTextView;
     private TextView goalTextView;
+    private CalendarView calendarView;
 
     private FirebaseAuth auth;
 
@@ -50,10 +53,24 @@ public class customerMainActivity extends AppCompatActivity
         trainerTextView = (TextView)view.findViewById(R.id.header_trainer_textView);
         goalTextView = (TextView)view.findViewById(R.id.header_goal_textView);
 
+
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
         trainerTextView.setText("트레이너");
         goalTextView.setText("-");
-        //트레이너, 목표
+        //메뉴창 고객 이름, 트레이너, 목표 설정
+
+        calendarView = (CalendarView) findViewById(R.id.calendar);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                Intent intent = new Intent(customerMainActivity.this, RecPopupActivity.class);
+                intent.putExtra("contact_year", year);
+                intent.putExtra("contact_month", month);
+                intent.putExtra("contact_day", dayOfMonth);
+
+                startActivity(intent);
+            }
+        });
 
 
     }
