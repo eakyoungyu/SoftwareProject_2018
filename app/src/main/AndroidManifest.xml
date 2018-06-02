@@ -23,9 +23,6 @@
             android:label="@string/title_activity_customer_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".TrainerInquireActivity"></activity>
-        <activity android:name=".RecPopupActivity"></activity>
-
-
 
     </application>
 

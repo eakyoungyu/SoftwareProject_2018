@@ -1,5 +1,6 @@
 package org.project.softwareproject_2018;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,9 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,16 +66,22 @@ public class customerMainActivity extends AppCompatActivity
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Intent intent = new Intent(customerMainActivity.this, RecPopupActivity.class);
-                intent.putExtra("contact_year", year);
-                intent.putExtra("contact_month", month);
-                intent.putExtra("contact_day", dayOfMonth);
-
-                startActivity(intent);
+                ShowDialog(year, month, dayOfMonth);
             }
         });
 
+    }
 
+    private void ShowDialog(int year, int month, int day) {
+        LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
+        final View dialogLayout = dialog.inflate(R.layout.activity_rec_popup, null);
+        final Dialog myDialog = new Dialog(customerMainActivity.this);
+
+        myDialog.setContentView(dialogLayout);
+        myDialog.show();
+
+        TextView DialogDate = (TextView)dialogLayout.findViewById(R.id.rec_date);
+        DialogDate.setText(year+"-"+month+"-"+day);
     }
 
     @Override
