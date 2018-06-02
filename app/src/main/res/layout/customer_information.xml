@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_weight="1"
+            android:focusedMonthDateColor="#ff0000"
+            android:maxDate="12/31/2100"
+            android:minDate="05/01/2018"
+            android:selectedWeekBackgroundColor="#ffff00"
+            android:showWeekNumber="false"
+            android:unfocusedMonthDateColor="#0000ff"
+            android:weekSeparatorLineColor="#00ff00" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:textSize="16dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/skeletal_muscle_mass"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:textSize="16dp"
+            android:text="TextView" />
+        <TextView
+            android:id="@+id/body_fat_mass"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:textSize="16dp"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

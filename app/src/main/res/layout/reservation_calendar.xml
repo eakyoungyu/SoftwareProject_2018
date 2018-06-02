@@ -10,17 +10,17 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="346dp"
+        android:layout_height="330dp"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="0dp">
 
         <CalendarView
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="369dp"
             android:layout_weight="1"
             android:focusedMonthDateColor="#ff0000"
             android:maxDate="12/31/2100"
