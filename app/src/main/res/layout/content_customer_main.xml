@@ -20,7 +20,8 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="115dp"
-            android:layout_weight="0">
+            android:layout_weight="0"
+            android:background="#00796B">
 
             <Button
                 android:id="@+id/rec_button"
@@ -31,6 +32,9 @@
                 android:layout_marginStart="292dp"
                 android:layout_marginTop="59dp"
                 android:text="예약"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@drawable/rounded2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +47,7 @@
         <CalendarView
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="328dp"
             android:layout_weight="1"
             android:focusedMonthDateColor="#ff0000"
             android:maxDate="12/31/2100"

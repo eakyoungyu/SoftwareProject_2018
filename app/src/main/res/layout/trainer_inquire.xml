@@ -4,259 +4,295 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1,2,3">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1,2,3">
 
-            <TableRow
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/trainerInquireUI_imageView_image1"
+                    android:layout_width="107dp"
+                    android:layout_height="100dp"
+                    android:text="사진"
+                    />
+
+                <TextView
+                    android:id="@+id/trainerInquireUI_textView_name1"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    android:text="이름"
+                    android:textColor="#00695c"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_labelType1"
+                        android:layout_width="32dp"
+                        android:layout_height="23dp"
+                        android:text="강도"
+                        android:textColor="#00695c"/>
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_type1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="상/중/하"
+                        android:textColor="#4db6ac"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/trainerInquireUI_Button_selectTrainer1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:text="선택"
+                    android:textColor="#00796B"
+                    android:background="@drawable/rounded"/>
+                />
 
-                    <ImageView
-                        android:id="@+id/trainerInquireUI_imageView_image1"
-                        android:layout_width="107dp"
-                        android:layout_height="100dp"
-                        android:text="사진"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/trainerInquireUI_imageView_image2"
+                    android:layout_width="107dp"
+                    android:layout_height="100dp"
+                    android:text="사진" />
+
+                <TextView
+                    android:id="@+id/trainerInquireUI_textView_name2"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    android:text="이름"
+                    android:textColor="#00695c"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_labelType2"
+                        android:layout_width="32dp"
+                        android:layout_height="23dp"
+                        android:text="강도"
+                        android:textColor="#00695c"/>
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_type2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="상/중/하"
+                        android:textColor="#4db6ac"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/trainerInquireUI_Button_selectTrainer2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="선택"
+                    android:textColor="#00796B"
+                    android:background="@drawable/rounded"/>
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/trainerInquireUI_imageView_image3"
+                    android:layout_width="107dp"
+                    android:layout_height="100dp"
+                    android:text="사진" />
+
+                <TextView
+                    android:id="@+id/trainerInquireUI_textView_name3"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    android:text="이름"
+                    android:textColor="#00695c"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_labelType3"
+                        android:layout_width="32dp"
+                        android:layout_height="23dp"
+                        android:text="강도"
+                        android:textColor="#00695c"/>
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_type3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="상/중/하"
+                        android:textColor="#4db6ac"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/trainerInquireUI_Button_selectTrainer3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="선택"
+                    android:textColor="#00796B"
+                    android:background="@drawable/rounded"/>
+                />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/trainerInquireUI_imageView_image4"
+                    android:layout_width="107dp"
+                    android:layout_height="100dp"
+                    android:text="사진" />
+
+                <TextView
+                    android:id="@+id/trainerInquireUI_textView_name4"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    android:text="이름"
+                    android:textColor="#00695c"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_labelType4"
+                        android:layout_width="32dp"
+                        android:layout_height="23dp"
+                        android:text="강도"
+                        android:textColor="#00695c"/>
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_type4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="상/중/하"
+                        android:textColor="#4db6ac"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/trainerInquireUI_Button_selectTrainer4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="선택"
+                    android:textColor="#00796B"
+                    android:background="@drawable/rounded"/>
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/trainerInquireUI_imageView_image5"
+                    android:layout_width="107dp"
+                    android:layout_height="100dp"
+                    android:text="사진" />
+
+                <TextView
+                    android:id="@+id/trainerInquireUI_textView_name5"
+                    android:layout_width="107dp"
+                    android:layout_height="27dp"
+                    android:text="이름"
+                    android:textColor="#00695c"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/trainerInquireUI_textView_labelType5"
+                        android:layout_width="32dp"
+                        android:layout_height="23dp"
+                        android:text="강도"
+                        android:textColor="#00695c"
                         />
 
                     <TextView
-                        android:id="@+id/trainerInquireUI_textView_name1"
-                        android:layout_width="107dp"
-                        android:layout_height="27dp"
-                        android:text="이름" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_labelType1"
-                            android:layout_width="32dp"
-                            android:layout_height="23dp"
-                            android:text="강도" />
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_type1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="상/중/하" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/trainerInquireUI_Button_selectTrainer1"
+                        android:id="@+id/trainerInquireUI_textView_type5"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="선택" />
-
+                        android:layout_height="match_parent"
+                        android:text="상/중/하"
+                        android:textColor="#4db6ac"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/trainerInquireUI_Button_selectTrainer5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/trainerInquireUI_imageView_image2"
-                        android:layout_width="107dp"
-                        android:layout_height="100dp"
-                        android:text="사진" />
-
-                    <TextView
-                        android:id="@+id/trainerInquireUI_textView_name2"
-                        android:layout_width="107dp"
-                        android:layout_height="27dp"
-                        android:text="이름" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_labelType2"
-                            android:layout_width="32dp"
-                            android:layout_height="23dp"
-                            android:text="강도" />
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_type2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="상/중/하" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/trainerInquireUI_Button_selectTrainer2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="선택" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/trainerInquireUI_imageView_image3"
-                        android:layout_width="107dp"
-                        android:layout_height="100dp"
-                        android:text="사진" />
-
-                    <TextView
-                        android:id="@+id/trainerInquireUI_textView_name3"
-                        android:layout_width="107dp"
-                        android:layout_height="27dp"
-                        android:text="이름" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_labelType3"
-                            android:layout_width="32dp"
-                            android:layout_height="23dp"
-                            android:text="강도" />
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_type3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="상/중/하" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/trainerInquireUI_Button_selectTrainer3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="선택"/>
-
-                </LinearLayout>
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/trainerInquireUI_imageView_image4"
-                        android:layout_width="107dp"
-                        android:layout_height="100dp"
-                        android:text="사진" />
-
-                    <TextView
-                        android:id="@+id/trainerInquireUI_textView_name4"
-                        android:layout_width="107dp"
-                        android:layout_height="27dp"
-                        android:text="이름" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_labelType4"
-                            android:layout_width="32dp"
-                            android:layout_height="23dp"
-                            android:text="강도" />
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_type4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="상/중/하" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/trainerInquireUI_Button_selectTrainer4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="선택" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/trainerInquireUI_imageView_image5"
-                        android:layout_width="107dp"
-                        android:layout_height="100dp"
-                        android:text="사진" />
-
-                    <TextView
-                        android:id="@+id/trainerInquireUI_textView_name5"
-                        android:layout_width="107dp"
-                        android:layout_height="27dp"
-                        android:text="이름" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_labelType5"
-                            android:layout_width="32dp"
-                            android:layout_height="23dp"
-                            android:text="강도" />
-
-                        <TextView
-                            android:id="@+id/trainerInquireUI_textView_type5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="상/중/하" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/trainerInquireUI_Button_selectTrainer5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="선택" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="선택"
+                    android:textColor="#00796B"
+                    android:background="@drawable/rounded"/>
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
-                    <Button
-                        android:id="@+id/trainerInquireUI_button_cancel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="취소" />
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
+                <Button
+                    android:id="@+id/trainerInquireUI_button_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="취소"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/rounded2"/>
+                />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

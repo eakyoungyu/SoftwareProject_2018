@@ -16,7 +16,9 @@
         android:text="Untitled"
         android:textSize="20pt"
         tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="84dp" />
+        tools:layout_editor_absoluteY="84dp"
+        android:textColor="#00796B"
+        />
 
     <EditText
         android:id="@+id/login_editText_email"
@@ -28,7 +30,8 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="210dp" />
+        tools:layout_editor_absoluteY="210dp"
+        android:background="@drawable/rounded"/>
 
     <EditText
         android:id="@+id/login_editText_password"
@@ -43,7 +46,8 @@
         android:ems="10"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="274dp" />
+        tools:layout_editor_absoluteY="274dp"
+        android:background="@drawable/rounded"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -52,6 +56,7 @@
         android:layout_alignBottom="@+id/login_editText_email"
         android:layout_alignStart="@+id/textView8"
         android:text="이메일"
+        android:textColor="#00695c"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="210dp"
         android:layout_alignLeft="@+id/textView8" />
@@ -64,6 +69,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="47dp"
         android:text="비밀번호"
+        android:textColor="#00695c"
         tools:layout_editor_absoluteX="56dp"
         tools:layout_editor_absoluteY="274dp"
         android:layout_alignParentLeft="true"
@@ -77,8 +83,12 @@
         android:layout_alignBottom="@+id/login_button_join"
         android:layout_alignEnd="@+id/textView6"
         android:text="로그인"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="367dp" />
+        tools:layout_editor_absoluteY="367dp"
+        android:background="@drawable/rounded2"
+        />
 
     <Button
         android:id="@+id/login_button_join"
@@ -88,9 +98,11 @@
         android:layout_alignStart="@+id/textView6"
         android:layout_marginBottom="70dp"
         android:text="회원가입"
+        android:textColor="#00695c"
         tools:layout_editor_absoluteX="70dp"
         tools:layout_editor_absoluteY="367dp"
-        android:layout_alignLeft="@+id/textView6" />
+        android:layout_alignLeft="@+id/textView6"
+        android:background="@drawable/rounded"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

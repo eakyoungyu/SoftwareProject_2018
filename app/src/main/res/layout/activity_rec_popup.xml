@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dip"
+    android:layout_width="match_parent"
     android:layout_height="250dip"
     android:layout_centerInParent="true"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
-    android:background="#FFFFFF"
+    android:background="#e0f2f1"
     android:orientation="vertical">
 
     <TextView
@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="예약날짜" />
+        android:text="예약날짜"
+        android:textColor="#00695c"/>
 
     <TextView
         android:id="@+id/rec_time"
@@ -23,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="예약시간" />
+        android:text="예약시간"
+        android:textColor="#00695c"/>
 
     <TextView
         android:id="@+id/rec_name"
@@ -31,21 +33,26 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="트레이너 이름" />
+        android:text="트레이너 이름"
+        android:textColor="#00695c"/>
 
     <Button
         android:id="@+id/change_button"
         android:layout_width="194dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:text="예약변경" />
+        android:text="예약변경"
+        android:textColor="#00796B"
+        android:background="@drawable/rounded"/>
 
     <Button
         android:id="@+id/cancel_button"
         android:layout_width="194dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
-        android:text="예약취소" />
+        android:text="예약취소"
+        android:textColor="#00796B"
+        android:background="@drawable/rounded"/>
 
     <Button
         android:id="@+id/trainer_change_button"
@@ -54,6 +61,8 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="20dp"
-        android:text="다른 트레이너와 예약" />
+        android:text="다른 트레이너와 예약"
+        android:textColor="#00796B"
+        android:background="@drawable/rounded"/>
 
 </LinearLayout>
