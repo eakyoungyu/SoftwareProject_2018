@@ -11,7 +11,7 @@ public class User {
     protected String name;
     protected String uid;
 
-
+    public User(){}
     public User(String name, String email, String uid) {
         this.name = name;
         this.email = email;
@@ -21,4 +21,5 @@ public class User {
         this.name = name;
         this.email = email;
     }
+
 }

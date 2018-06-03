@@ -7,6 +7,8 @@ package org.project.softwareproject_2018;
 public class Customer extends User{
     protected String goal;
     protected String tid;
+
+    public Customer(){}
     public Customer(String name, String email, String uid, String goal, String tid){
         super(name, email, uid);
         this.goal=goal;
@@ -17,4 +19,5 @@ public class Customer extends User{
         this.goal=goal;
         this.tid=tid;
     }
+
 }
