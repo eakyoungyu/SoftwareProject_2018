@@ -171,8 +171,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="46dp"
         android:text="가입하기"
-        android:textColor="#00796B"
-        android:background="@drawable/rounded"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="@drawable/rounded2"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="415dp" />
 
