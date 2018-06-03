@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class customerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,7 +43,8 @@ public class customerMainActivity extends AppCompatActivity
     private DatabaseReference mDatabase;
     private Customer currentCust;
     private Trainer currentTrai;
-
+    private UserScheduleInquireSystem userScheduleInquireSystem;
+    private ArrayList<ReservationTime> rts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class customerMainActivity extends AppCompatActivity
         setContentView(R.layout.customer_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         currentCust=new Customer();
         currentTrai=new Trainer();
@@ -81,7 +86,7 @@ public class customerMainActivity extends AppCompatActivity
         getCurrentUserInfo(auth.getCurrentUser().getUid());
         //메뉴창 고객 이름, 트레이너, 목표 설정
 
-
+        //rts=userScheduleInquireSystem.getReseravtion(auth.getCurrentUser().getUid());
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
@@ -98,6 +103,8 @@ public class customerMainActivity extends AppCompatActivity
 
 
     }
+
+
 
     private void ShowReservation(){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
