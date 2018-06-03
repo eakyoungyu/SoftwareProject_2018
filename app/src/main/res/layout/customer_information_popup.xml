@@ -8,6 +8,14 @@
     android:background="#FFFFFF"
     android:layout_centerInParent="true">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="29dp"
+        android:layout_height="34dp"
+        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignParentEnd="true"
+        android:text="kg" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="70dp"
@@ -100,5 +108,13 @@
         android:layout_alignTop="@+id/textView18"
         android:layout_toEndOf="@+id/button"
         android:layout_toRightOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="29dp"
+        android:layout_height="34dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView17"
+        android:text="%" />
 
 </RelativeLayout>
