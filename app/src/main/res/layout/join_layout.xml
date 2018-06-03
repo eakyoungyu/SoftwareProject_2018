@@ -13,8 +13,7 @@
         android:layout_marginStart="34dp"
         android:text="이메일"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="55dp"
-        android:textColor="#00796B"/>
+        tools:layout_editor_absoluteY="55dp" />
 
     <EditText
         android:id="@+id/join_editText_email"
@@ -23,10 +22,10 @@
         android:layout_below="@+id/textView14"
         android:layout_centerHorizontal="true"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="55dp"
-        android:background="@drawable/rounded" />
+        tools:layout_editor_absoluteY="55dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -36,7 +35,6 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_password"
         android:text="PW"
-        android:textColor="#00796B"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="125dp" />
 
@@ -49,7 +47,6 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_password_check"
         android:text="PW확인"
-        android:textColor="#00796B"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="175dp" />
 
@@ -61,10 +58,10 @@
         android:layout_above="@+id/join_button_pw_check"
         android:layout_toEndOf="@+id/textView8"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="125dp"
-        android:background="@drawable/rounded"/>
+        tools:layout_editor_absoluteY="125dp" />
 
     <EditText
         android:id="@+id/join_editText_password_check"
@@ -74,10 +71,10 @@
         android:layout_marginBottom="31dp"
         android:layout_toEndOf="@+id/textView8"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="175dp"
-        android:background="@drawable/rounded" />
+        tools:layout_editor_absoluteY="175dp" />
 
     <Button
         android:id="@+id/join_button_pw_check"
@@ -87,9 +84,7 @@
         android:layout_toEndOf="@+id/join_editText_password_check"
         android:text="확인"
         tools:layout_editor_absoluteX="314dp"
-        tools:layout_editor_absoluteY="43dp"
-        android:textColor="#00796B"
-        android:background="@drawable/rounded" />
+        tools:layout_editor_absoluteY="43dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -99,7 +94,6 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_centerVertical="true"
         android:text="이름"
-        android:textColor="#00796B"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="245dp" />
 
@@ -110,9 +104,9 @@
         android:layout_alignStart="@+id/join_editText_goal"
         android:layout_centerVertical="true"
         android:ems="10"
+        android:hint="Name"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="245dp"
-        android:background="@drawable/rounded"/>
+        tools:layout_editor_absoluteY="245dp" />
 
     <TextView
         android:id="@+id/textView12"
@@ -122,7 +116,6 @@
         android:layout_alignStart="@+id/textView9"
         android:layout_alignTop="@+id/join_editText_goal"
         android:text="목표체중"
-        android:textColor="#00796B"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="295dp" />
 
@@ -134,9 +127,9 @@
         android:layout_below="@+id/join_editText_name"
         android:layout_marginTop="11dp"
         android:ems="10"
+        android:hint="Goal"
         tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="295dp"
-        android:background="@drawable/rounded" />
+        tools:layout_editor_absoluteY="295dp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -146,7 +139,6 @@
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
         android:text="트레이너"
-        android:textColor="#00796B"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="345dp" />
 
@@ -158,8 +150,6 @@
         android:layout_marginBottom="35dp"
         android:layout_toEndOf="@+id/textView13"
         android:text="선택"
-        android:textColor="#00796B"
-        android:background="@drawable/rounded"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="335dp" />
 
@@ -171,23 +161,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="46dp"
         android:text="가입하기"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:background="@drawable/rounded2"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="415dp" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
         android:text="Welcome!"
-        android:textAlignment="center"
-        android:textColor="#00796B"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/join_selected_trainer"
@@ -197,7 +182,6 @@
         android:layout_alignTop="@+id/textView13"
         android:layout_marginEnd="89dp"
         android:text="-"
-        android:textColor="#00796B"
         android:visibility="invisible" />
 
 </RelativeLayout>

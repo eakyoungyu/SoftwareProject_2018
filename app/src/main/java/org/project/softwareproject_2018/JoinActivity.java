@@ -232,6 +232,6 @@ public class JoinActivity extends AppCompatActivity {
         mDatabase.child("users").child(userId).setValue(user);
         */
         Customer customer = new Customer(name, email, goal, tid);
-        mDatabase.child("customers").child(userId).setValue(customer);
+        mDatabase.child("users").child(userId).setValue(customer);
     }
 }

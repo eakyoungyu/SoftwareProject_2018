@@ -15,48 +15,35 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class customerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static final int REQ_ADD_CONTACT = 1 ;
+    static final int REQ_ADD_CONTACT = 1;
 
     private TextView nameTextView;
     private TextView trainerTextView;
     private TextView goalTextView;
+    private CalendarView calendarView;
 
     private Button reservationButton;
 
-    private CalendarView calendarView;
-
     private FirebaseAuth auth;
-    private DatabaseReference mDatabase;
-    private Customer currentCust;
-    private Trainer currentTrai;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         auth = FirebaseAuth.getInstance();
-        currentCust=new Customer();
-        currentTrai=new Trainer();
 
         setSupportActionBar(toolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,36 +55,39 @@ public class customerMainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
 
+
         nameTextView = (TextView)view.findViewById(R.id.header_name_textview);
         trainerTextView = (TextView)view.findViewById(R.id.header_trainer_textView);
         goalTextView = (TextView)view.findViewById(R.id.header_goal_textView);
 
-        reservationButton = (Button)view.findViewById(R.id.rec_button);
-
         calendarView = (CalendarView) findViewById(R.id.calendar);
 
+        reservationButton = (Button)findViewById(R.id.rec_button);
+
+
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
+        trainerTextView.setText("트레이너");
         goalTextView.setText("-");
         //메뉴창 고객 이름, 트레이너, 목표 설정
-        getCurrentUserInfo(auth.getCurrentUser().getUid());
 
-        //예약 버튼
-        reservationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowReservation();
-            }
-        });
 
-        //달력-날짜 버튼
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 ShowRecPopupDialog(year, month, dayOfMonth);
             }
         });
+
+        reservationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               ShowReservation();
+           }
+        });
+
+
     }
 
-    //reservation_calendar 팝업창 띄우기
     private void ShowReservation(){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.reservation_calendar, null);
@@ -116,7 +106,6 @@ public class customerMainActivity extends AppCompatActivity
         });
     }
 
-
     //customer_rec_view 팝업창 띄우기
     private void ShowRecView(int year, int month, int day){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
@@ -126,61 +115,11 @@ public class customerMainActivity extends AppCompatActivity
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
-
-        RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_button);
-
-        RadioButton radioButton1 = (RadioButton)dialogLayout.findViewById(R.id.radioButton1);
-        RadioButton radioButton2 = (RadioButton)dialogLayout.findViewById(R.id.radioButton2);
-        RadioButton radioButton3 = (RadioButton)dialogLayout.findViewById(R.id.radioButton3);
-        RadioButton radioButton4 = (RadioButton)dialogLayout.findViewById(R.id.radioButton4);
-        RadioButton radioButton5 = (RadioButton)dialogLayout.findViewById(R.id.radioButton5);
-        RadioButton radioButton6 = (RadioButton)dialogLayout.findViewById(R.id.radioButton6);
-        RadioButton radioButton7 = (RadioButton)dialogLayout.findViewById(R.id.radioButton7);
-        RadioButton radioButton8 = (RadioButton)dialogLayout.findViewById(R.id.radioButton8);
-        RadioButton radioButton9 = (RadioButton)dialogLayout.findViewById(R.id.radioButton9);
-        RadioButton radioButton10 = (RadioButton)dialogLayout.findViewById(R.id.radioButton10);
-        RadioButton radioButton11 = (RadioButton)dialogLayout.findViewById(R.id.radioButton11);
-        RadioButton radioButton12 = (RadioButton)dialogLayout.findViewById(R.id.radioButton12);
-
         //예약 가능 시간 출력
-        ArrayList<RadioButton> recItems = new ArrayList<RadioButton>();
-
-        recItems.add(radioButton1);
-        recItems.add(radioButton2);
-        recItems.add(radioButton3);
-        recItems.add(radioButton4);
-        recItems.add(radioButton5);
-        recItems.add(radioButton6);
-        recItems.add(radioButton7);
-        recItems.add(radioButton8);
-        recItems.add(radioButton9);
-        recItems.add(radioButton10);
-        recItems.add(radioButton11);
-        recItems.add(radioButton12);
-
-        ArrayList<String> reservedTime = new ArrayList<String>();
-        //트레이너 예약된 시간 reservedTime에 추가
-
-        for(int i=0;i<reservedTime.size();i++){
-            for(int j=0;j<recItems.size();j++){
-                if(reservedTime.get(i).equals(recItems.get(j).getText().toString()))
-                    recItems.get(j).setEnabled(false); //reservedTime과 겹치는 버튼 비활성화
-            }
-        }
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton selected = (RadioButton)dialogLayout.findViewById(checkedId);
-                String time = selected.getText().toString();
-                //예약 추가
-            }
-        });
-
     }
 
 
-    //activity_rec_popup창 띄우기
+
     private void ShowRecPopupDialog(int year, int month, int day) {
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.activity_rec_popup, null);
@@ -190,6 +129,8 @@ public class customerMainActivity extends AppCompatActivity
         myDialog.show();
 
         TextView DialogDate = (TextView)dialogLayout.findViewById(R.id.rec_date);
+        DialogDate.setText(year+"-"+month+"-"+day);
+
         TextView DialogTime = (TextView)dialogLayout.findViewById(R.id.rec_time);
         TextView DialogTrainer = (TextView)dialogLayout.findViewById(R.id.rec_name);
 
@@ -219,10 +160,10 @@ public class customerMainActivity extends AppCompatActivity
 
         //다른 트레이너와 예약 버튼
         buttonTrainerChange.setOnClickListener(new View.OnClickListener() {
-            @Override
+             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(customerMainActivity.this, TrainerInquireActivity.class);
-                startActivityForResult(intent, REQ_ADD_CONTACT);
+                  startActivityForResult(intent, REQ_ADD_CONTACT);
             }
         });
     }
@@ -266,6 +207,8 @@ public class customerMainActivity extends AppCompatActivity
         }
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -305,7 +248,8 @@ public class customerMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // 나의 신체정보
+            // Handle the camera action
+            //나의 신체정보
         }
         else if(id == R.id.nav_share){
             logoutUser();
@@ -318,57 +262,7 @@ public class customerMainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     public void logoutUser(){
         FirebaseAuth.getInstance().signOut();
     }
-
-
-    public void getCurrentUserInfo(final String uid){
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("customers").child(uid).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!dataSnapshot.exists()){
-                            mDatabase.child("trainers").child(uid).addListenerForSingleValueEvent(
-                                    new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            currentTrai.name = dataSnapshot.child("name").getValue(String.class);
-                                            updateUI("Trainer");
-                                        }
-
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    }
-                            );
-                        }else {
-                            currentCust.name = dataSnapshot.child("name").getValue(String.class);
-                            currentCust.goal = dataSnapshot.child("goal").getValue(String.class);
-                            updateUI("Customer");
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                }
-        );
-    }
-
-    private void updateUI(String user){
-        if(user=="Customer") {
-            trainerTextView.setText("고객: " +currentCust.name);
-            goalTextView.setText(currentCust.goal);
-        }
-        if(user=="Trainer"){
-            trainerTextView.setText("트레이너: " +currentTrai.name);
-            //나의 정보 버튼 없애기
-        }
-    }
-
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="300dip"
+    android:layout_height="300dip"
+    android:background="#FFFFFF"
+    android:layout_centerInParent="true">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/button1"
+        android:layout_marginStart="50dp"
+        android:text="저장"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="50dp"
+        android:text="취소"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="나의 정보 수정"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="67dp"
+        android:text="BMI"
+        android:layout_alignLeft="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="117dp"
+        android:text="근육량"
+        android:layout_alignLeft="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginBottom="115dp"
+        android:text="체중"
+        android:layout_alignLeft="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="245dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_toEndOf="@+id/button"
+        android:ems="10"
+        android:layout_toRightOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/textView17"
+        android:layout_toEndOf="@+id/button"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="255dp"
+        android:layout_toRightOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/textView18"
+        android:layout_toEndOf="@+id/button"
+        android:layout_toRightOf="@+id/button" />
+
+</RelativeLayout>

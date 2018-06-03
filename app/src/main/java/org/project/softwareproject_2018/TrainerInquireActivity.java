@@ -93,7 +93,7 @@ public class TrainerInquireActivity extends AppCompatActivity {
         buttonTrainer5 = (Button)findViewById(R.id.trainerInquireUI_Button_selectTrainer5) ;
 
         database = FirebaseDatabase.getInstance();
-        Query getTrainerData = database.getReference().child("trainers");
+        Query getTrainerData = database.getReference().child("trainer");
         getTrainerData.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

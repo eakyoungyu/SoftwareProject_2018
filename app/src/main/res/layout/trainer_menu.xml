@@ -30,7 +30,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_trainer_menu"
+        app:headerLayout="@layout/nav_header_customer_main"
         app:menu="@menu/trainer_menu_drawer" />
 
 

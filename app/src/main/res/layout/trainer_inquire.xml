@@ -55,9 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="선택"
-                        android:textColor="#00796B"
-                        android:background="@drawable/rounded"/>
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -101,9 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="선택"
-                        android:textColor="#00796B"
-                        android:background="@drawable/rounded"/>
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -148,9 +144,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="선택"
-                        android:textColor="#00796B"
-                        android:background="@drawable/rounded"/>
+                        android:text="선택"/>
 
                 </LinearLayout>
             </TableRow>
@@ -200,9 +194,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="선택"
-                        android:textColor="#00796B"
-                        android:background="@drawable/rounded"/>
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -247,9 +239,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="선택"
-                        android:textColor="#00796B"
-                        android:background="@drawable/rounded"/>
+                        android:text="선택" />
 
                 </LinearLayout>
 
@@ -265,10 +255,7 @@
                         android:id="@+id/trainerInquireUI_button_cancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="취소"
-                        android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/rounded2"/>
+                        android:text="취소" />
                 </LinearLayout>
             </TableRow>
         </TableLayout>

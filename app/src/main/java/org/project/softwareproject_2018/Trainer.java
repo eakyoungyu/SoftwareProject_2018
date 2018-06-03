@@ -4,7 +4,6 @@ public class Trainer extends User {
     protected String image;   //경로 저장
     protected String type;
 
-    public Trainer(){}
     public Trainer(String uid, String email, String image, String name, String type) {
         super(name, email, uid);
     //    this.uid=uid;
