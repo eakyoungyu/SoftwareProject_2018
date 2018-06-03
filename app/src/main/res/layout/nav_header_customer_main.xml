@@ -31,12 +31,12 @@
         android:id="@+id/header_trainer_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="트레이너 이름" />
+        android:text="android.studio@android.com" />
 
     <TextView
         android:id="@+id/header_goal_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="목표 kg" />
+        android:text="android.studio@android.com" />
 
 </LinearLayout>
