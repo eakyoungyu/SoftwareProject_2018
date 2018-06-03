@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class customerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -112,6 +116,7 @@ public class customerMainActivity extends AppCompatActivity
         });
     }
 
+
     //customer_rec_view 팝업창 띄우기
     private void ShowRecView(int year, int month, int day){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
@@ -121,8 +126,59 @@ public class customerMainActivity extends AppCompatActivity
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
+
+        RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_button);
+
+        RadioButton radioButton1 = (RadioButton)dialogLayout.findViewById(R.id.radioButton1);
+        RadioButton radioButton2 = (RadioButton)dialogLayout.findViewById(R.id.radioButton2);
+        RadioButton radioButton3 = (RadioButton)dialogLayout.findViewById(R.id.radioButton3);
+        RadioButton radioButton4 = (RadioButton)dialogLayout.findViewById(R.id.radioButton4);
+        RadioButton radioButton5 = (RadioButton)dialogLayout.findViewById(R.id.radioButton5);
+        RadioButton radioButton6 = (RadioButton)dialogLayout.findViewById(R.id.radioButton6);
+        RadioButton radioButton7 = (RadioButton)dialogLayout.findViewById(R.id.radioButton7);
+        RadioButton radioButton8 = (RadioButton)dialogLayout.findViewById(R.id.radioButton8);
+        RadioButton radioButton9 = (RadioButton)dialogLayout.findViewById(R.id.radioButton9);
+        RadioButton radioButton10 = (RadioButton)dialogLayout.findViewById(R.id.radioButton10);
+        RadioButton radioButton11 = (RadioButton)dialogLayout.findViewById(R.id.radioButton11);
+        RadioButton radioButton12 = (RadioButton)dialogLayout.findViewById(R.id.radioButton12);
+
         //예약 가능 시간 출력
+        ArrayList<RadioButton> recItems = new ArrayList<RadioButton>();
+
+        recItems.add(radioButton1);
+        recItems.add(radioButton2);
+        recItems.add(radioButton3);
+        recItems.add(radioButton4);
+        recItems.add(radioButton5);
+        recItems.add(radioButton6);
+        recItems.add(radioButton7);
+        recItems.add(radioButton8);
+        recItems.add(radioButton9);
+        recItems.add(radioButton10);
+        recItems.add(radioButton11);
+        recItems.add(radioButton12);
+
+        ArrayList<String> reservedTime = new ArrayList<String>();
+        //트레이너 예약된 시간 reservedTime에 추가
+
+        for(int i=0;i<reservedTime.size();i++){
+            for(int j=0;j<recItems.size();j++){
+                if(reservedTime.get(i).equals(recItems.get(j).getText().toString()))
+                    recItems.get(j).setEnabled(false); //reservedTime과 겹치는 버튼 비활성화
+            }
+        }
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton selected = (RadioButton)dialogLayout.findViewById(checkedId);
+                String time = selected.getText().toString();
+                //예약 추가
+            }
+        });
+
     }
+
 
     //activity_rec_popup창 띄우기
     private void ShowRecPopupDialog(int year, int month, int day) {
@@ -267,6 +323,7 @@ public class customerMainActivity extends AppCompatActivity
         FirebaseAuth.getInstance().signOut();
     }
 
+
     public void getCurrentUserInfo(final String uid){
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("customers").child(uid).addListenerForSingleValueEvent(
@@ -313,4 +370,5 @@ public class customerMainActivity extends AppCompatActivity
             //나의 정보 버튼 없애기
         }
     }
+
 }
