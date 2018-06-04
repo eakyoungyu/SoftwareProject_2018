@@ -13,37 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:layout_weight="0"
-            android:background="#00796B">
-
-            <Button
-                android:id="@+id/rec_button"
-                android:layout_width="76dp"
-                android:layout_height="39dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="292dp"
-                android:layout_marginTop="59dp"
-                android:background="@drawable/rounded2"
-                android:text="예약"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.905"
-                tools:ignore="MissingConstraints" />
-
-        </android.support.constraint.ConstraintLayout>
+        tools:layout_editor_absoluteY="61dp">
 
         <CalendarView
             android:id="@+id/calendar"
@@ -57,6 +29,28 @@
             android:showWeekNumber="false"
             android:unfocusedMonthDateColor="#0000ff"
             android:weekSeparatorLineColor="#00ff00" />
+
+        <Button
+            android:id="@+id/rec_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="@drawable/rounded"
+            android:text="예약"
+            android:textColor="#00796B"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/trainer_change_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded"
+            android:text="다른 트레이너와 예약"
+            android:textColor="#00796B"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="437dp" />
 
     </LinearLayout>
 
