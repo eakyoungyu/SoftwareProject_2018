@@ -20,7 +20,7 @@
         <CalendarView
             android:id="@+id/calendar"
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="348dp"
             android:layout_weight="1"
             android:focusedMonthDateColor="#ff0000"
             android:maxDate="12/31/2100"

@@ -1,81 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/join_editText_email"
+        android:layout_marginStart="34dp"
+        android:text="이메일"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="55dp" />
 
-    <LinearLayout
+    <include
+        layout="@layout/app_bar_trainer_main"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
-
-        <CalendarView
-            android:id="@+id/calendar"
-            android:layout_width="match_parent"
-            android:layout_height="640dp"
-            android:layout_weight="1"
-            android:focusedMonthDateColor="#ff0000"
-            android:maxDate="12/31/2100"
-            android:minDate="05/01/2018"
-            android:selectedWeekBackgroundColor="#ffff00"
-            android:showWeekNumber="false"
-            android:unfocusedMonthDateColor="#0000ff"
-            android:weekSeparatorLineColor="#00ff00" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/cust_name_and_time1"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/cust_name_and_time2"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/cust_name_and_time3"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/cust_name_and_time4"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/cust_name_and_time5"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/cust_name_and_time6"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:text="TextView" />
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_trainer_main"
+        app:menu="@menu/trainer_menu_drawer" />
 
 
-</android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.DrawerLayout>

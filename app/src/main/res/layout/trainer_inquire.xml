@@ -7,15 +7,19 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:stretchColumns="1,2,3">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -23,15 +27,14 @@
                     android:id="@+id/trainerInquireUI_imageView_image1"
                     android:layout_width="107dp"
                     android:layout_height="100dp"
-                    android:text="사진"
-                    />
+                    android:text="사진" />
 
                 <TextView
                     android:id="@+id/trainerInquireUI_textView_name1"
                     android:layout_width="107dp"
                     android:layout_height="27dp"
                     android:text="이름"
-                    android:textColor="#00695c"/>
+                    android:textColor="#00695c" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,14 +45,14 @@
                         android:layout_width="32dp"
                         android:layout_height="23dp"
                         android:text="강도"
-                        android:textColor="#00695c"/>
+                        android:textColor="#00695c" />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_type1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="상/중/하"
-                        android:textColor="#4db6ac"/>
+                        android:textColor="#4db6ac" />
                 </LinearLayout>
 
                 <Button
@@ -57,10 +60,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:text="선택"
-                    android:textColor="#00796B"
-                    android:background="@drawable/rounded"/>
+                    android:textColor="#00796B" />
                 />
 
             </LinearLayout>
@@ -68,6 +71,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -81,7 +85,7 @@
                     android:layout_width="107dp"
                     android:layout_height="27dp"
                     android:text="이름"
-                    android:textColor="#00695c"/>
+                    android:textColor="#00695c" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,14 +96,14 @@
                         android:layout_width="32dp"
                         android:layout_height="23dp"
                         android:text="강도"
-                        android:textColor="#00695c"/>
+                        android:textColor="#00695c" />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_type2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="상/중/하"
-                        android:textColor="#4db6ac"/>
+                        android:textColor="#4db6ac" />
                 </LinearLayout>
 
                 <Button
@@ -107,10 +111,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:text="선택"
-                    android:textColor="#00796B"
-                    android:background="@drawable/rounded"/>
+                    android:textColor="#00796B" />
                 />
 
             </LinearLayout>
@@ -119,7 +123,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
 
                 <ImageView
                     android:id="@+id/trainerInquireUI_imageView_image3"
@@ -132,7 +137,7 @@
                     android:layout_width="107dp"
                     android:layout_height="27dp"
                     android:text="이름"
-                    android:textColor="#00695c"/>
+                    android:textColor="#00695c" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,14 +148,14 @@
                         android:layout_width="32dp"
                         android:layout_height="23dp"
                         android:text="강도"
-                        android:textColor="#00695c"/>
+                        android:textColor="#00695c" />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_type3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="상/중/하"
-                        android:textColor="#4db6ac"/>
+                        android:textColor="#4db6ac" />
                 </LinearLayout>
 
                 <Button
@@ -158,10 +163,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:text="선택"
-                    android:textColor="#00796B"
-                    android:background="@drawable/rounded"/>
+                    android:textColor="#00796B" />
                 />
 
             </LinearLayout>
@@ -169,11 +174,13 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -188,7 +195,7 @@
                     android:layout_width="107dp"
                     android:layout_height="27dp"
                     android:text="이름"
-                    android:textColor="#00695c"/>
+                    android:textColor="#00695c" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,14 +206,14 @@
                         android:layout_width="32dp"
                         android:layout_height="23dp"
                         android:text="강도"
-                        android:textColor="#00695c"/>
+                        android:textColor="#00695c" />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_type4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="상/중/하"
-                        android:textColor="#4db6ac"/>
+                        android:textColor="#4db6ac" />
                 </LinearLayout>
 
                 <Button
@@ -214,10 +221,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:text="선택"
-                    android:textColor="#00796B"
-                    android:background="@drawable/rounded"/>
+                    android:textColor="#00796B" />
                 />
 
             </LinearLayout>
@@ -225,6 +232,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -239,8 +247,7 @@
                     android:layout_width="107dp"
                     android:layout_height="27dp"
                     android:text="이름"
-                    android:textColor="#00695c"
-                    />
+                    android:textColor="#00695c" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -251,15 +258,14 @@
                         android:layout_width="32dp"
                         android:layout_height="23dp"
                         android:text="강도"
-                        android:textColor="#00695c"
-                        />
+                        android:textColor="#00695c" />
 
                     <TextView
                         android:id="@+id/trainerInquireUI_textView_type5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="상/중/하"
-                        android:textColor="#4db6ac"/>
+                        android:textColor="#4db6ac" />
                 </LinearLayout>
 
                 <Button
@@ -267,10 +273,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/rounded"
                     android:gravity="center"
                     android:text="선택"
-                    android:textColor="#00796B"
-                    android:background="@drawable/rounded"/>
+                    android:textColor="#00796B" />
                 />
 
             </LinearLayout>
@@ -287,10 +293,10 @@
                     android:id="@+id/trainerInquireUI_button_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rounded2"
                     android:text="취소"
-                    android:textStyle="bold"
                     android:textColor="#ffffff"
-                    android:background="@drawable/rounded2"/>
+                    android:textStyle="bold" />
                 />
             </LinearLayout>
         </TableRow>
