@@ -23,26 +23,6 @@
             android:layout_weight="0"
             android:background="#00796B">
 
-            <Button
-                android:id="@+id/rec_button"
-                android:layout_width="76dp"
-                android:layout_height="39dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="292dp"
-                android:layout_marginTop="59dp"
-                android:background="@drawable/rounded2"
-                android:text="예약"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.905"
-                tools:ignore="MissingConstraints" />
-
         </android.support.constraint.ConstraintLayout>
 
         <CalendarView
@@ -58,6 +38,27 @@
             android:unfocusedMonthDateColor="#0000ff"
             android:weekSeparatorLineColor="#00ff00" />
 
+        <Button
+            android:id="@+id/rec_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded"
+            tools:ignore="MissingConstraints"
+            android:textColor="#00796B"
+            android:layout_weight="0"
+            android:text="예약" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/trainer_change_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다른 트레이너와 예약"
+        android:background="@drawable/rounded"
+        android:textColor="#00796B"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="437dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

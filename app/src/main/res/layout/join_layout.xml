@@ -91,8 +91,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/textView8"
         android:layout_marginEnd="13dp"
-        android:background="@drawable/rounded"
         android:text="확인"
+        android:background="@drawable/rounded"
         android:textColor="#00796B"
         tools:layout_editor_absoluteX="334dp"
         tools:layout_editor_absoluteY="43dp" />
