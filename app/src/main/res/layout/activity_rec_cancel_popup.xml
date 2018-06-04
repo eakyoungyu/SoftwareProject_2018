@@ -20,6 +20,7 @@
             android:layout_marginTop="51dp"
             android:gravity="center"
             android:text="예약을 취소하시겠습니까?"
+            android:textColor="#00695c"
             android:textSize="16dp" />
 
         <LinearLayout
@@ -36,7 +37,9 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_weight="1"
-                android:text="예" />
+                android:text="예"
+                android:background="@drawable/rounded"
+                android:textColor="#00796B"/>
 
             <Button
                 android:id="@+id/no_button"
@@ -47,7 +50,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_weight="1"
-                android:text="아니오" />
+                android:text="아니오"
+                android:background="@drawable/rounded"
+                android:textColor="#00796B"/>
         </LinearLayout>
 
     </LinearLayout>
