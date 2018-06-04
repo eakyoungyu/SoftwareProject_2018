@@ -13,17 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:layout_weight="0"
-            android:background="#00796B">
-
-        </android.support.constraint.ConstraintLayout>
+        tools:layout_editor_absoluteY="61dp">
 
         <CalendarView
             android:id="@+id/calendar"
@@ -42,23 +34,24 @@
             android:id="@+id/rec_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded"
-            tools:ignore="MissingConstraints"
-            android:textColor="#00796B"
             android:layout_weight="0"
-            android:text="예약" />
+            android:background="@drawable/rounded"
+            android:text="예약"
+            android:textColor="#00796B"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/trainer_change_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded"
+            android:text="다른 트레이너와 예약"
+            android:textColor="#00796B"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="437dp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/trainer_change_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="다른 트레이너와 예약"
-        android:background="@drawable/rounded"
-        android:textColor="#00796B"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="437dp"
-        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
