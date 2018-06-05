@@ -37,6 +37,7 @@ public class customerMainActivity extends AppCompatActivity
     private CalendarView calendarView;
 
     private Button reservationButton;
+    private Button buttonTrainerChange;
 
     private FirebaseAuth auth;
 
@@ -79,6 +80,7 @@ public class customerMainActivity extends AppCompatActivity
         calendarView = (CalendarView) findViewById(R.id.calendar);
 
         reservationButton = (Button)findViewById(R.id.rec_button);
+        buttonTrainerChange = (Button)findViewById(R.id.trainer_change_button);
 
 
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
@@ -94,6 +96,7 @@ public class customerMainActivity extends AppCompatActivity
             }
         });
 
+        //예약 버튼
         reservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +104,14 @@ public class customerMainActivity extends AppCompatActivity
            }
         });
 
+        //다른 트레이너와 예약 버튼
+        buttonTrainerChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(customerMainActivity.this, TrainerInquireActivity.class);
+                startActivityForResult(intent, REQ_ADD_CONTACT);
+            }
+        });
 
     }
 
@@ -154,7 +165,7 @@ public class customerMainActivity extends AppCompatActivity
 
         Button buttonReservationChange = (Button)dialogLayout.findViewById(R.id.change_button);
         Button buttonReservationCancel = (Button)dialogLayout.findViewById(R.id.cancel_button);
-        Button buttonTrainerChange = (Button)dialogLayout.findViewById(R.id.trainer_change_button);
+
 
         DialogDate.setText(year+"-"+month+"-"+day); //예약 날짜
         //예약 시간
@@ -176,14 +187,7 @@ public class customerMainActivity extends AppCompatActivity
             }
         });
 
-        //다른 트레이너와 예약 버튼
-        buttonTrainerChange.setOnClickListener(new View.OnClickListener() {
-             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(customerMainActivity.this, TrainerInquireActivity.class);
-                  startActivityForResult(intent, REQ_ADD_CONTACT);
-            }
-        });
+
     }
 
     //예약 취소 확인 팝업창 띄우기
