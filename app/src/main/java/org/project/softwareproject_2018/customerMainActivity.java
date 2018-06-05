@@ -289,25 +289,10 @@ public class customerMainActivity extends AppCompatActivity
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(!dataSnapshot.exists()){
-                            mDatabase.child("trainers").child(uid).addListenerForSingleValueEvent(
-                                    new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            currentTrai.name = dataSnapshot.child("name").getValue(String.class);
-                                            updateUI("Trainer");
-                                        }
+                        currentCust.name = dataSnapshot.child("name").getValue(String.class);
+                        currentCust.goal = dataSnapshot.child("goal").getValue(String.class);
+                        updateUI();
 
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
-
-                                        }
-                                    });
-                        }else {
-                            currentCust.name = dataSnapshot.child("name").getValue(String.class);
-                            currentCust.goal = dataSnapshot.child("goal").getValue(String.class);
-                            updateUI("Customer");
-                        }
                     }
 
                     @Override
@@ -316,14 +301,9 @@ public class customerMainActivity extends AppCompatActivity
                     }
                 });
     }
-    private void updateUI(String user){
-                if(user=="Customer") {
-                    trainerTextView.setText("고객: " +currentCust.name);
-                    goalTextView.setText(currentCust.goal);
-                   }
-                if(user=="Trainer"){
-                    trainerTextView.setText("트레이너: " +currentTrai.name);
-                    //나의 정보 버튼 없애기
-                }
+    private void updateUI(){
+        trainerTextView.setText("고객: " +currentCust.name);
+        goalTextView.setText(currentCust.goal);
+
     }
 }

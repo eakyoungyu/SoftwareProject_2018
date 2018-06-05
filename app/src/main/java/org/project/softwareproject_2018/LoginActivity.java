@@ -16,8 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     //TAG
@@ -99,11 +102,8 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
 
                             //                       updateUI(user);
-                            Toast.makeText(mContext, "로그인 성공",
-                                    Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, customerMainActivity.class);
-                            startActivity(intent);
-                            finish();
+                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show();
+                            getCurrentUserInfo(mAuth.getCurrentUser().getUid());
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -116,7 +116,50 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void SignOutUser(){
-        FirebaseAuth.getInstance().signOut();
+
+    public void getCurrentUserInfo(final String uid){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("customers").orderByKey().equalTo(uid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.exists()){
+                            mDatabase.child("trainers").orderByKey().equalTo(uid).addListenerForSingleValueEvent(
+                                    new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            updateUI("Trainer");
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+                        }else {
+                            updateUI("Customer");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
+    private void updateUI(String user){
+        if(user=="Customer") {
+            Intent intent = new Intent(LoginActivity.this, customerMainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        if(user=="Trainer"){
+            /*  trainer 메인 화면으로 넘어가기
+            Intent intent = new Intent(LoginActivity.this, customerMainActivity.class);
+            startActivity(intent);
+            finish();
+            */
+        }
+    }
+
 }
