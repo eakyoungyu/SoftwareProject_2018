@@ -324,8 +324,8 @@ public class customerMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
-            //나의 신체정보
+            Intent intent = new Intent(customerMainActivity.this, customerInformation.class);
+            startActivity(intent);
         }
         else if(id == R.id.nav_share){
             logoutUser();
