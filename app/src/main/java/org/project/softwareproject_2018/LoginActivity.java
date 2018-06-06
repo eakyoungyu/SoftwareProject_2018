@@ -154,11 +154,9 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         if(user=="Trainer"){
-            /*  trainer 메인 화면으로 넘어가기
-            Intent intent = new Intent(LoginActivity.this, customerMainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, trainerMainActivity.class);
             startActivity(intent);
             finish();
-            */
         }
     }
 
