@@ -19,6 +19,7 @@ public class ReservationSystem {
     }
     public static void cancelReservation(ReservationTime rt){
         mDatabase= FirebaseDatabase.getInstance().getReference();
-        String rid=rt.cid+rt.tid+rt.date+rt.startTime;
+        mDatabase.child("customers").child(rt.cid).child("reservtimes").child(rt.date).removeValue();
+        mDatabase.child("trainers").child(rt.tid).child("reservtimes").child(rt.date).removeValue();
     }
 }

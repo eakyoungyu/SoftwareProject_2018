@@ -2,24 +2,25 @@ package org.project.softwareproject_2018;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,12 +35,16 @@ public class trainerMainActivity extends AppCompatActivity
     private SimpleAdapter adapter;
 
     private FirebaseAuth auth;
+    private FirebaseDatabase database;
+    private String curTid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trainer_main);
         auth = FirebaseAuth.getInstance();
+        database=FirebaseDatabase.getInstance();
+        curTid=auth.getCurrentUser().getUid();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,14 +69,39 @@ public class trainerMainActivity extends AppCompatActivity
         calendarView = (CalendarView) findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                String curdate=year+"-"+month+"-"+dayOfMonth;
                 //Arraylist 초기화
                 items.clear();
+                item = new HashMap<String, String>();
+                Query getRes =database.getReference().child("trainers").child(curTid).child("reservtimes").child(curdate);
+                getRes.addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                                    String cid=snapshot.getKey();
+                                    String startTime=snapshot.getValue(String.class).trim();
+                                    item.put("customer", cid);
+                                    item.put("time", startTime);
+                                    items.add(item);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
 
                 // 아이템 추가 예
-                item = new HashMap<String, String>();
-                item.put("time", "2");
+                item.put("time", curdate);
                 item.put("customer", "2");
                 items.add(item);
+
+                item.put("time", "gi");
+                item.put("customer", "44");
+                items.add(item);
+
 
                 // listview 갱신
                 adapter.notifyDataSetChanged();
@@ -134,4 +164,5 @@ public class trainerMainActivity extends AppCompatActivity
     public void logoutUser(){
         FirebaseAuth.getInstance().signOut();
     }
+
 }
