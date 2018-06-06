@@ -2,47 +2,35 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="300dip"
+    android:layout_width="250dip"
+    android:layout_height="350dip"
     android:background="#FFFFFF"
+    android:gravity="center"
     android:layout_centerInParent="true">
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="29dp"
-        android:layout_height="34dp"
-        android:layout_alignBottom="@+id/add_weight"
-        android:layout_alignEnd="@id/textView"
-        android:text="  kg" />
 
     <Button
         android:id="@+id/button_store"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/button_cancel"
-        android:layout_marginStart="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="217dp"
+        android:background="@drawable/rounded2"
         android:text="저장"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
         android:textColor="#ffffff"
-        android:background="@drawable/rounded2"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/button_cancel"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="50dp"
+        android:layout_alignTop="@+id/button_store"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/rounded"
         android:text="취소"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
-        android:textColor="#00796B"
-        android:background="@drawable/rounded"/>
+        android:textColor="#00796B" />
 
     <TextView
         android:id="@+id/textView"
@@ -70,25 +58,24 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@id/button_store"
         android:layout_marginTop="117dp"
-        android:text="근육량"
+        android:text="근육량(%)"
         android:layout_alignLeft="@+id/textView"
         android:textColor="#00695c"/>
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="50dp"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@id/button_store"
-        android:layout_marginBottom="115dp"
-        android:text="체중"
-        android:layout_alignLeft="@+id/textView"
-        android:textColor="#00695c"/>
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button_store"
+        android:layout_marginTop="167dp"
+        android:text="체중(kg)"
+        android:textColor="#00695c" />
 
     <EditText
         android:id="@+id/add_bmi"
@@ -121,13 +108,5 @@
         android:layout_toEndOf="@+id/button_store"
         android:layout_toRightOf="@+id/button_store"
         android:background="@drawable/rounded"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="29dp"
-        android:layout_height="34dp"
-        android:layout_alignEnd="@id/textView"
-        android:layout_alignTop="@+id/textView17"
-        android:text="  %" />
 
 </RelativeLayout>

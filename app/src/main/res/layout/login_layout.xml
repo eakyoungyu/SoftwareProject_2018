@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
         android:gravity="center"
-        android:text="Untitled"
+        android:text="FREEPT"
         android:textSize="20pt"
         tools:layout_editor_absoluteX="70dp"
         tools:layout_editor_absoluteY="84dp"
