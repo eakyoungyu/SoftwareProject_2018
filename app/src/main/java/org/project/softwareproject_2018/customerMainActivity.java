@@ -111,7 +111,7 @@ public class customerMainActivity extends AppCompatActivity
                                     ShowRecPopupDialog(curRes);
                                 }
                                 else{
-                                    Toast.makeText(customerMainActivity.this, "없음", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(customerMainActivity.this, "예약이 없습니다", Toast.LENGTH_SHORT).show();
                                     ShowRecPopupDialog(curRes);
                                 }
                             }
@@ -196,7 +196,7 @@ public class customerMainActivity extends AppCompatActivity
 
 
 
-    private void ShowRecPopupDialog(ReservationTime reservationTime) {
+    private void ShowRecPopupDialog(final ReservationTime reservationTime) {
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.activity_rec_popup, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
@@ -220,6 +220,8 @@ public class customerMainActivity extends AppCompatActivity
         else{
             DialogTime.setText("");
             DialogTrainer.setText("");
+            buttonReservationCancel.setEnabled(false);
+            buttonReservationChange.setEnabled(false);
         }
 
         DialogDate.setText(reservationTime.date); //예약 날짜
@@ -230,6 +232,7 @@ public class customerMainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 ShowReservation();
+                ShowRecCancel(reservationTime);
             }
         });
 
@@ -237,7 +240,7 @@ public class customerMainActivity extends AppCompatActivity
         buttonReservationCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecCancel();
+                ShowRecCancel(reservationTime);
             }
         });
 
@@ -245,7 +248,7 @@ public class customerMainActivity extends AppCompatActivity
     }
 
     //예약 취소 확인 팝업창 띄우기
-    private void ShowRecCancel(){
+    private void ShowRecCancel(final ReservationTime reservationTime){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.activity_rec_cancel_popup, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
@@ -261,6 +264,7 @@ public class customerMainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 //예약 삭제
+                ReservationSystem.cancelReservation(reservationTime);
             }
         });
 
