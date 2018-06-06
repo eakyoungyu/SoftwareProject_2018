@@ -15,7 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +49,8 @@ public class customerMainActivity extends AppCompatActivity
     private Trainer currentTrai;
     private UserScheduleInquireSystem userScheduleInquireSystem;
     private ArrayList<ReservationTime> rts;
+    private String date;
+    private String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +105,7 @@ public class customerMainActivity extends AppCompatActivity
         reservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               ShowReservation();
+                ShowReservation();
            }
         });
 
@@ -130,21 +135,36 @@ public class customerMainActivity extends AppCompatActivity
         //예약-날짜 버튼 클릭
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                date = year + "-" +month + "-" + dayOfMonth;
                 ShowRecView(year, month, dayOfMonth);
+                myDialog.cancel();
             }
         });
     }
 
     //customer_rec_view 팝업창 띄우기
     private void ShowRecView(int year, int month, int day){
-        LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
+        final LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.customer_rec_view, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
 
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
-        //예약 가능 시간 출력
+        RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_Buttons);
+
+        //예약 불가능한 시간 버튼 비활성화
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+             @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton selected = (RadioButton)dialogLayout.findViewById(checkedId);
+                time = selected.getText().toString().substring(0,7);
+                Toast.makeText(customerMainActivity.this, date+"/"+time, Toast.LENGTH_SHORT).show();
+                myDialog.cancel();
+            }
+        });
+
     }
 
 
