@@ -1,5 +1,6 @@
 package org.project.softwareproject_2018;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,15 +13,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class trainerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private TextView nameTextView;
+    private CalendarView calendarView;
+
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trainer_main);
-
+        auth = FirebaseAuth.getInstance();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -30,6 +40,19 @@ public class trainerMainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigationView.getHeaderView(0);
+
+        nameTextView = (TextView)view.findViewById(R.id.header_name_textview);
+        nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
+
+        calendarView = (CalendarView) findViewById(R.id.calendar);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -71,12 +94,19 @@ public class trainerMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_share) {
-
+            logoutUser();
+            finish();
+            Intent intent = new Intent(trainerMainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logoutUser(){
+        FirebaseAuth.getInstance().signOut();
     }
 }
