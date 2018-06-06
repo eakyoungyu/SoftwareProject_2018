@@ -20,6 +20,6 @@ public class ReservationSystem {
     public static void cancelReservation(ReservationTime rt){
         mDatabase= FirebaseDatabase.getInstance().getReference();
         mDatabase.child("customers").child(rt.cid).child("reservtimes").child(rt.date).removeValue();
-        mDatabase.child("trainers").child(rt.tid).child("reservtimes").child(rt.date).removeValue();
+        mDatabase.child("trainers").child(rt.tid).child("reservtimes").child(rt.date).child(rt.cid).removeValue();
     }
 }

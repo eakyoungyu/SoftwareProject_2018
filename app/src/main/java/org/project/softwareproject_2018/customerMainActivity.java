@@ -172,13 +172,48 @@ public class customerMainActivity extends AppCompatActivity
         final LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.customer_rec_view, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
+        final RadioButton r[]=new RadioButton[12];
+        r[0]=(RadioButton)findViewById(R.id.radioButton1);
+        r[1]=(RadioButton)findViewById(R.id.radioButton2);
+        r[2]=(RadioButton)findViewById(R.id.radioButton3);
+        r[3]=(RadioButton)findViewById(R.id.radioButton4);
+        r[4]=(RadioButton)findViewById(R.id.radioButton5);
+        r[5]=(RadioButton)findViewById(R.id.radioButton6);
+        r[6]=(RadioButton)findViewById(R.id.radioButton7);
+        r[7]=(RadioButton)findViewById(R.id.radioButton8);
+        r[8]=(RadioButton)findViewById(R.id.radioButton9);
+        r[9]=(RadioButton)findViewById(R.id.radioButton10);
+        r[10]=(RadioButton)findViewById(R.id.radioButton11);
+        r[11]=(RadioButton)findViewById(R.id.radioButton12);
+
+        String curdate=year+"-"+month+"-"+day;
 
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
-        RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_Buttons);
+        final RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_Buttons);
 
         //예약 불가능한 시간 버튼 비활성화
+        Query getTraiTime=mDatabase.child("trainers").child(currentCust.tid).child("reservtimes").child(curdate);
+        getTraiTime.addValueEventListener(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            String st=snapshot.getValue(String.class).trim();
+                            int startTime=Integer.parseInt(st);
+                            startTime-=9;
+                            Toast.makeText(customerMainActivity.this, ""+startTime,Toast.LENGTH_SHORT).show();
+                            //r[startTime].setEnabled(false);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
              @Override
