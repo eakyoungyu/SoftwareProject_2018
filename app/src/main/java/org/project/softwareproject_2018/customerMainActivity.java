@@ -25,9 +25,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class customerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,13 +43,15 @@ public class customerMainActivity extends AppCompatActivity
 
     private FirebaseAuth auth;
 
+    private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private Customer currentCust;
-    private Trainer currentTrai;
-    private UserScheduleInquireSystem userScheduleInquireSystem;
-    private ArrayList<ReservationTime> rts;
     private String date;
     private String time;
+    private ReservationTime reservationTime;
+    private ReservationTime curRes;
+
+    private TextView DialogTrainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +60,8 @@ public class customerMainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
+        database=FirebaseDatabase.getInstance();
         currentCust=new Customer();
-        currentTrai=new Trainer();
 
         setSupportActionBar(toolbar);
 
@@ -90,16 +89,42 @@ public class customerMainActivity extends AppCompatActivity
 
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
         goalTextView.setText("-");
-        getCurrentUserInfo(auth.getCurrentUser().getUid());
+        currentCust.uid=auth.getCurrentUser().getUid();
+        getCurrentUserInfo(currentCust.uid);
         //메뉴창 고객 이름, 트레이너, 목표 설정
 
         //rts=userScheduleInquireSystem.getReseravtion(auth.getCurrentUser().getUid());
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                ShowRecPopupDialog(year, month, dayOfMonth);
+                String curdate=year+"-"+month+"-"+dayOfMonth;
+                curRes=new ReservationTime(currentCust.uid, "", curdate, "");
+
+                Query getResv =database.getReference().child("customers").child(curRes.cid).child("reservtimes").child(curdate);
+                getResv.addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()) {
+                                    curRes.tid = dataSnapshot.child("tid").getValue(String.class);
+                                    curRes.startTime = dataSnapshot.child("startTime").getValue(String.class).trim();
+                                    ShowRecPopupDialog(curRes);
+                                }
+                                else{
+                                    Toast.makeText(customerMainActivity.this, "없음", Toast.LENGTH_SHORT).show();
+                                    ShowRecPopupDialog(curRes);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
             }
         });
+
 
         //예약 버튼
         reservationButton.setOnClickListener(new View.OnClickListener() {
@@ -159,8 +184,10 @@ public class customerMainActivity extends AppCompatActivity
              @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selected = (RadioButton)dialogLayout.findViewById(checkedId);
-                time = selected.getText().toString().substring(0,7);
-                Toast.makeText(customerMainActivity.this, date+"/"+time, Toast.LENGTH_SHORT).show();
+                time = selected.getText().toString().substring(0,2);
+                reservationTime=new ReservationTime(currentCust.uid, currentCust.tid, date, time);
+                ReservationSystem.makeReservation(reservationTime);
+                Toast.makeText(customerMainActivity.this, reservationTime.date+"/"+reservationTime.startTime+"시 예약 완료", Toast.LENGTH_LONG).show();
                 myDialog.cancel();
             }
         });
@@ -169,7 +196,7 @@ public class customerMainActivity extends AppCompatActivity
 
 
 
-    private void ShowRecPopupDialog(int year, int month, int day) {
+    private void ShowRecPopupDialog(ReservationTime reservationTime) {
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.activity_rec_popup, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
@@ -177,20 +204,27 @@ public class customerMainActivity extends AppCompatActivity
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
-        TextView DialogDate = (TextView)dialogLayout.findViewById(R.id.rec_date);
-        DialogDate.setText(year+"-"+month+"-"+day);
+        final TextView DialogDate = (TextView)dialogLayout.findViewById(R.id.rec_date);
 
-        TextView DialogTime = (TextView)dialogLayout.findViewById(R.id.rec_time);
-        TextView DialogTrainer = (TextView)dialogLayout.findViewById(R.id.rec_name);
+        final TextView DialogTime = (TextView)dialogLayout.findViewById(R.id.rec_time);
+        DialogTrainer = (TextView)dialogLayout.findViewById(R.id.rec_name);
 
         Button buttonReservationChange = (Button)dialogLayout.findViewById(R.id.change_button);
         Button buttonReservationCancel = (Button)dialogLayout.findViewById(R.id.cancel_button);
+        if(reservationTime.startTime!="") {
+            int endtime = Integer.parseInt(reservationTime.startTime) + 1;
+            String time = reservationTime.startTime + " : 00 ~ " + endtime + " : 00";
+            getTrainerName(reservationTime.tid);
+            DialogTime.setText(time);
+        }
+        else{
+            DialogTime.setText("");
+            DialogTrainer.setText("");
+        }
 
-
-        DialogDate.setText(year+"-"+month+"-"+day); //예약 날짜
+        DialogDate.setText(reservationTime.date); //예약 날짜
         //예약 시간
         //예약 트레이너
-
         //예약 변경 버튼
         buttonReservationChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -315,6 +349,7 @@ public class customerMainActivity extends AppCompatActivity
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         currentCust.name = dataSnapshot.child("name").getValue(String.class);
                         currentCust.goal = dataSnapshot.child("goal").getValue(String.class);
+                        currentCust.tid= dataSnapshot.child("tid").getValue(String.class);
                         updateUI();
 
                     }
@@ -329,5 +364,20 @@ public class customerMainActivity extends AppCompatActivity
         trainerTextView.setText("고객: " +currentCust.name);
         goalTextView.setText(currentCust.goal);
 
+    }
+    private void getTrainerName(String tid){
+        mDatabase.child("trainers").child(tid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        DialogTrainer.setText(dataSnapshot.child("name").getValue(String.class));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
     }
 }
