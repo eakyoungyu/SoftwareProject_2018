@@ -173,18 +173,18 @@ public class customerMainActivity extends AppCompatActivity
         final View dialogLayout = dialog.inflate(R.layout.customer_rec_view, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
         final RadioButton r[]=new RadioButton[12];
-        r[0]=(RadioButton)findViewById(R.id.radioButton1);
-        r[1]=(RadioButton)findViewById(R.id.radioButton2);
-        r[2]=(RadioButton)findViewById(R.id.radioButton3);
-        r[3]=(RadioButton)findViewById(R.id.radioButton4);
-        r[4]=(RadioButton)findViewById(R.id.radioButton5);
-        r[5]=(RadioButton)findViewById(R.id.radioButton6);
-        r[6]=(RadioButton)findViewById(R.id.radioButton7);
-        r[7]=(RadioButton)findViewById(R.id.radioButton8);
-        r[8]=(RadioButton)findViewById(R.id.radioButton9);
-        r[9]=(RadioButton)findViewById(R.id.radioButton10);
-        r[10]=(RadioButton)findViewById(R.id.radioButton11);
-        r[11]=(RadioButton)findViewById(R.id.radioButton12);
+        r[0]=(RadioButton)dialogLayout.findViewById(R.id.radioButton1);
+        r[1]=(RadioButton)dialogLayout.findViewById(R.id.radioButton2);
+        r[2]=(RadioButton)dialogLayout.findViewById(R.id.radioButton3);
+        r[3]=(RadioButton)dialogLayout.findViewById(R.id.radioButton4);
+        r[4]=(RadioButton)dialogLayout.findViewById(R.id.radioButton5);
+        r[5]=(RadioButton)dialogLayout.findViewById(R.id.radioButton6);
+        r[6]=(RadioButton)dialogLayout.findViewById(R.id.radioButton7);
+        r[7]=(RadioButton)dialogLayout.findViewById(R.id.radioButton8);
+        r[8]=(RadioButton)dialogLayout.findViewById(R.id.radioButton9);
+        r[9]=(RadioButton)dialogLayout.findViewById(R.id.radioButton10);
+        r[10]=(RadioButton)dialogLayout.findViewById(R.id.radioButton11);
+        r[11]=(RadioButton)dialogLayout.findViewById(R.id.radioButton12);
 
         String curdate=year+"-"+month+"-"+day;
 
@@ -204,7 +204,7 @@ public class customerMainActivity extends AppCompatActivity
                             int startTime=Integer.parseInt(st);
                             startTime-=9;
                             Toast.makeText(customerMainActivity.this, ""+startTime,Toast.LENGTH_SHORT).show();
-                            //r[startTime].setEnabled(false);
+                            r[startTime].setEnabled(false);
                         }
                     }
 
@@ -268,6 +268,7 @@ public class customerMainActivity extends AppCompatActivity
             public void onClick(View v) {
                 ShowReservation();
                 ShowRecCancel(reservationTime);
+                myDialog.cancel();
             }
         });
 
@@ -276,6 +277,7 @@ public class customerMainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 ShowRecCancel(reservationTime);
+                myDialog.cancel();
             }
         });
 
@@ -300,6 +302,8 @@ public class customerMainActivity extends AppCompatActivity
             public void onClick(View v) {
                 //예약 삭제
                 ReservationSystem.cancelReservation(reservationTime);
+                myDialog.cancel();
+
             }
         });
 
