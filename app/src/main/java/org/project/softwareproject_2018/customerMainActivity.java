@@ -131,7 +131,7 @@ public class customerMainActivity extends AppCompatActivity
         reservationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowReservation();
+                ShowReservation(currentCust.tid);
            }
         });
 
@@ -148,7 +148,7 @@ public class customerMainActivity extends AppCompatActivity
 
 
 
-    private void ShowReservation(){
+    private void ShowReservation(final String tid){
         LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.reservation_calendar, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
@@ -163,14 +163,14 @@ public class customerMainActivity extends AppCompatActivity
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 month+=1;
                 date = year + "-" +month + "-" + dayOfMonth;
-                ShowRecView(year, month, dayOfMonth);
+                ShowRecView(year, month, dayOfMonth, tid);
                 myDialog.cancel();
             }
         });
     }
 
     //customer_rec_view 팝업창 띄우기
-    private void ShowRecView(int year, int month, int day){
+    private void ShowRecView(int year, int month, int day, final String tid){
         final LayoutInflater dialog = LayoutInflater.from(customerMainActivity.this);
         final View dialogLayout = dialog.inflate(R.layout.customer_rec_view, null);
         final Dialog myDialog = new Dialog(customerMainActivity.this);
@@ -196,7 +196,7 @@ public class customerMainActivity extends AppCompatActivity
         final RadioGroup radioGroup = (RadioGroup)dialogLayout.findViewById(R.id.rec_Buttons);
 
         //예약 불가능한 시간 버튼 비활성화
-        Query getTraiTime=mDatabase.child("trainers").child(currentCust.tid).child("reservtimes").child(curdate);
+        Query getTraiTime=mDatabase.child("trainers").child(tid).child("reservtimes").child(curdate);
         getTraiTime.addValueEventListener(
                 new ValueEventListener() {
                     @Override
@@ -204,8 +204,9 @@ public class customerMainActivity extends AppCompatActivity
                         for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                             String st=snapshot.getValue(String.class).trim();
                             int startTime=Integer.parseInt(st);
+                            if(startTime>=13)   startTime--;
                             startTime-=9;
-                            Toast.makeText(customerMainActivity.this, ""+startTime,Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(customerMainActivity.this, ""+startTime,Toast.LENGTH_SHORT).show();
                             r[startTime].setEnabled(false);
                         }
                     }
@@ -222,7 +223,7 @@ public class customerMainActivity extends AppCompatActivity
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton selected = (RadioButton)dialogLayout.findViewById(checkedId);
                 time = selected.getText().toString().substring(0,2);
-                reservationTime=new ReservationTime(currentCust.uid, currentCust.tid, date, time);
+                reservationTime=new ReservationTime(currentCust.uid, tid, date, time);
                 ReservationSystem.makeReservation(reservationTime);
                 Toast.makeText(customerMainActivity.this, reservationTime.date+"/"+reservationTime.startTime+"시 예약 완료", Toast.LENGTH_LONG).show();
                 myDialog.cancel();
@@ -268,7 +269,7 @@ public class customerMainActivity extends AppCompatActivity
         buttonReservationChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowReservation();
+                ShowReservation(currentCust.tid);
                 ShowRecCancel(reservationTime);
                 myDialog.cancel();
             }
@@ -323,7 +324,7 @@ public class customerMainActivity extends AppCompatActivity
         if (requestCode == REQ_ADD_CONTACT) {
             if (resultCode == RESULT_OK) {
                 String trainer = intent.getStringExtra("contact_trainer") ; //고객이 선택한 다른 트레이너 tid
-                ShowReservation(); //reservation_calendar 팝업창 띄우기
+                ShowReservation(trainer); //reservation_calendar 팝업창 띄우기
             }
         }
     }

@@ -73,6 +73,7 @@ public class trainerMainActivity extends AppCompatActivity
                 String curdate=year+"-"+(month+1)+"-"+dayOfMonth;
 
                 //Arraylist 초기화
+                adapter.notifyDataSetChanged();
                 items.clear();
                 item = new HashMap<String, String>();
                 Query getRes =database.getReference().child("trainers").child(curTid).child("reservtimes").child(curdate);
@@ -83,10 +84,7 @@ public class trainerMainActivity extends AppCompatActivity
                                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                                     String cid=snapshot.getKey();
                                     String startTime=snapshot.getValue(String.class).trim();
-                                    item.put("time", startTime+":00");
-                                    item.put("customer", cid);
-                                    items.add(item);
-                                    adapter.notifyDataSetChanged();
+                                    updateListView(startTime, cid);
                                 }
                             }
 
@@ -98,7 +96,7 @@ public class trainerMainActivity extends AppCompatActivity
 
 
                 // listview 갱신
-                adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -158,5 +156,24 @@ public class trainerMainActivity extends AppCompatActivity
     public void logoutUser(){
         FirebaseAuth.getInstance().signOut();
     }
+    private void updateListView(final String startTime, final String cid){
+        database.getReference().child("customers").child(cid).addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String name=dataSnapshot.child("name").getValue(String.class);
+                        item.put("customer", name);
+                        item.put("time", startTime+":00");
+                        items.add(item);
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(trainerMainActivity.this,name, Toast.LENGTH_SHORT).show();
+                    }
 
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
+    }
 }
