@@ -14,6 +14,7 @@ import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -69,7 +70,8 @@ public class trainerMainActivity extends AppCompatActivity
         calendarView = (CalendarView) findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                String curdate=year+"-"+month+"-"+dayOfMonth;
+                String curdate=year+"-"+(month+1)+"-"+dayOfMonth;
+
                 //Arraylist 초기화
                 items.clear();
                 item = new HashMap<String, String>();
@@ -81,9 +83,10 @@ public class trainerMainActivity extends AppCompatActivity
                                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                                     String cid=snapshot.getKey();
                                     String startTime=snapshot.getValue(String.class).trim();
+                                    item.put("time", startTime+":00");
                                     item.put("customer", cid);
-                                    item.put("time", startTime);
                                     items.add(item);
+                                    adapter.notifyDataSetChanged();
                                 }
                             }
 
@@ -92,15 +95,6 @@ public class trainerMainActivity extends AppCompatActivity
 
                             }
                         });
-
-                // 아이템 추가 예
-                item.put("time", curdate);
-                item.put("customer", "2");
-                items.add(item);
-
-                item.put("time", "gi");
-                item.put("customer", "44");
-                items.add(item);
 
 
                 // listview 갱신

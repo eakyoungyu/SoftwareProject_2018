@@ -97,6 +97,7 @@ public class customerMainActivity extends AppCompatActivity
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                month+=1;
                 String curdate=year+"-"+month+"-"+dayOfMonth;
                 curRes=new ReservationTime(currentCust.uid, "", curdate, "");
 
@@ -160,6 +161,7 @@ public class customerMainActivity extends AppCompatActivity
         //예약-날짜 버튼 클릭
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                month+=1;
                 date = year + "-" +month + "-" + dayOfMonth;
                 ShowRecView(year, month, dayOfMonth);
                 myDialog.cancel();
