@@ -48,7 +48,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="BMI(%)"
+                    android:text="BMI"
                     android:textSize="16dp" />
 
                 <TextView
