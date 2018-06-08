@@ -10,12 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class trainerMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -146,7 +140,7 @@ public class trainerMainActivity extends AppCompatActivity
                         String name=dataSnapshot.child("name").getValue(String.class);
                         adapter.addItem(startTime+":00", name);
                         adapter.notifyDataSetChanged();
-                        Toast.makeText(trainerMainActivity.this,name, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(trainerMainActivity.this,name, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

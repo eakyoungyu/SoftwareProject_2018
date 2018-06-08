@@ -52,6 +52,7 @@ public class customerMainActivity extends AppCompatActivity
     private ReservationTime curRes;
 
     private TextView DialogTrainer;
+    private TextView DialogTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,7 +228,7 @@ public class customerMainActivity extends AppCompatActivity
                 ReservationSystem.makeReservation(reservationTime);
                 Toast.makeText(customerMainActivity.this, reservationTime.date+"/"+reservationTime.startTime+"시 예약 완료", Toast.LENGTH_LONG).show();
                 myDialog.cancel();
-            }
+        }
         });
 
     }
@@ -244,7 +245,7 @@ public class customerMainActivity extends AppCompatActivity
 
         final TextView DialogDate = (TextView)dialogLayout.findViewById(R.id.rec_date);
 
-        final TextView DialogTime = (TextView)dialogLayout.findViewById(R.id.rec_time);
+        DialogTime = (TextView)dialogLayout.findViewById(R.id.rec_time);
         DialogTrainer = (TextView)dialogLayout.findViewById(R.id.rec_name);
 
         Button buttonReservationChange = (Button)dialogLayout.findViewById(R.id.change_button);

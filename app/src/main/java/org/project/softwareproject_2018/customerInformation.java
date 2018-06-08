@@ -10,19 +10,34 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class customerInformation extends AppCompatActivity {
 
     private TextView textViewWeight;
     private TextView textViewMuscle;
     private TextView textViewFat;
-    private String weight;
-    private String muscle;
-    private String fat;
+    private CustInfo custInfo;
+    private EditText addWeight;
+    private EditText addFat;
+    private EditText addMuscle;
+
     private CalendarView calendarView;
+    private DatabaseReference mDatabase;
+    private String uid;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_information);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        custInfo=new CustInfo();
 
         textViewWeight = (TextView)findViewById(R.id.weight);
         textViewMuscle = (TextView)findViewById(R.id.skeletal_muscle_mass);
@@ -31,12 +46,28 @@ public class customerInformation extends AppCompatActivity {
         calendarView = (CalendarView)findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                final String date=year+"-"+(month+1)+"-"+dayOfMonth;
                 //해당 날짜 나의 정보 불러오기
-                textViewWeight.setText(weight);
-                textViewFat.setText(fat);
-                textViewMuscle.setText(muscle);
+                final Query getMyinfo=mDatabase.child("customers").child(uid).child("info").child(date);
+                getMyinfo.addValueEventListener(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.exists()) {
+                                    custInfo = dataSnapshot.getValue(CustInfo.class);
+                                    updateUI();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        }
+                );
 
                 showInformationAdd(year, month, dayOfMonth);
+
             }
         });
     }
@@ -45,23 +76,25 @@ public class customerInformation extends AppCompatActivity {
         LayoutInflater dialog = LayoutInflater.from(customerInformation.this);
         final View dialogLayout = dialog.inflate(R.layout.customer_information_popup, null);
         final Dialog myDialog = new Dialog(customerInformation.this);
+        final String date=year+"-"+(month+1)+"-"+dayOfMonth;
 
         myDialog.setContentView(dialogLayout);
         myDialog.show();
 
-        final EditText addWeight = (EditText)dialogLayout.findViewById(R.id.add_weight);
-        final EditText addFat = (EditText)dialogLayout.findViewById(R.id.add_bmi);
-        final EditText addMuscle = (EditText)dialogLayout.findViewById(R.id.add_muscle);
+        addWeight = (EditText)dialogLayout.findViewById(R.id.add_weight);
+        addFat = (EditText)dialogLayout.findViewById(R.id.add_bmi);
+        addMuscle = (EditText)dialogLayout.findViewById(R.id.add_muscle);
         Button buttonStore = (Button)dialogLayout.findViewById(R.id.button_store);
         Button buttonCancel = (Button)dialogLayout.findViewById(R.id.button_cancel);
 
         buttonStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fat = addFat.getText().toString();
-                muscle = addMuscle.getText().toString();
-                weight = addWeight.getText().toString();
+                custInfo.fat=addFat.getText().toString();
+                custInfo.muscle=addMuscle.getText().toString();
+                custInfo.weight=addWeight.getText().toString();
                 //DB 저장
+                mDatabase.child("customers").child(uid).child("info").child(date).setValue(custInfo);
                 myDialog.cancel();
             }
         });
@@ -72,5 +105,16 @@ public class customerInformation extends AppCompatActivity {
                 myDialog.cancel();
             }
         });
+    }
+    public void updateUI(){
+        textViewWeight.setText(custInfo.weight);
+        textViewFat.setText(custInfo.fat);
+        textViewMuscle.setText(custInfo.muscle);
+        //아래 3줄 주석 제거하고 위의 3줄 주석 처리하고 테스트
+/*
+        addWeight.setText(custInfo.weight);
+        addFat.setText(custInfo.fat);
+        addMuscle.setText(custInfo.muscle);
+        */
     }
 }
