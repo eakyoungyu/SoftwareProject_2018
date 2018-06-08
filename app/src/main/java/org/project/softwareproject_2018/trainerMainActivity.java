@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,9 +32,8 @@ public class trainerMainActivity extends AppCompatActivity
 
     private TextView nameTextView;
     private CalendarView calendarView;
-    private ArrayList<HashMap<String, String>> items = new ArrayList<HashMap<String, String>>() ;
-    private HashMap<String, String> item;
-    private SimpleAdapter adapter;
+    private ListView listView;
+    private ListViewAdapter adapter;
 
     private FirebaseAuth auth;
     private FirebaseDatabase database;
@@ -61,11 +61,9 @@ public class trainerMainActivity extends AppCompatActivity
         nameTextView.setText(auth.getCurrentUser().getEmail()+"님");
 
         // listview 생성 및 adapter 지정.
-        final ListView listview = (ListView) findViewById(R.id.listview) ;
-        adapter = new SimpleAdapter(this, items, android.R.layout.simple_list_item_2,
-                new String[]{"time", "customer"},
-                new int[]{android.R.id.text1, android.R.id.text2}) ;
-        listview.setAdapter(adapter) ;
+        listView = (ListView) findViewById(R.id.listview) ;
+        adapter = new ListViewAdapter();
+        listView.setAdapter(adapter) ;
 
         calendarView = (CalendarView) findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -73,9 +71,9 @@ public class trainerMainActivity extends AppCompatActivity
                 String curdate=year+"-"+(month+1)+"-"+dayOfMonth;
 
                 //Arraylist 초기화
+                adapter.clear();
                 adapter.notifyDataSetChanged();
-                items.clear();
-                item = new HashMap<String, String>();
+
                 Query getRes =database.getReference().child("trainers").child(curTid).child("reservtimes").child(curdate);
                 getRes.addValueEventListener(
                         new ValueEventListener() {
@@ -84,6 +82,7 @@ public class trainerMainActivity extends AppCompatActivity
                                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                                     String cid=snapshot.getKey();
                                     String startTime=snapshot.getValue(String.class).trim();
+
                                     updateListView(startTime, cid);
                                 }
                             }
@@ -93,10 +92,6 @@ public class trainerMainActivity extends AppCompatActivity
 
                             }
                         });
-
-
-                // listview 갱신
-
             }
         });
 
@@ -119,20 +114,6 @@ public class trainerMainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -156,15 +137,14 @@ public class trainerMainActivity extends AppCompatActivity
     public void logoutUser(){
         FirebaseAuth.getInstance().signOut();
     }
+
     private void updateListView(final String startTime, final String cid){
         database.getReference().child("customers").child(cid).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String name=dataSnapshot.child("name").getValue(String.class);
-                        item.put("customer", name);
-                        item.put("time", startTime+":00");
-                        items.add(item);
+                        adapter.addItem(startTime+":00", name);
                         adapter.notifyDataSetChanged();
                         Toast.makeText(trainerMainActivity.this,name, Toast.LENGTH_SHORT).show();
                     }
