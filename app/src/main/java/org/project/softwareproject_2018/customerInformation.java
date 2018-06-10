@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,10 +18,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class customerInformation extends AppCompatActivity {
-
-    private TextView textViewWeight;
-    private TextView textViewMuscle;
-    private TextView textViewFat;
     private CustInfo custInfo;
     private EditText addWeight;
     private EditText addFat;
@@ -38,10 +33,6 @@ public class customerInformation extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         custInfo=new CustInfo();
-
-        textViewWeight = (TextView)findViewById(R.id.weight);
-        textViewMuscle = (TextView)findViewById(R.id.skeletal_muscle_mass);
-        textViewFat = (TextView)findViewById(R.id.body_fat_mass);
 
         calendarView = (CalendarView)findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -107,14 +98,9 @@ public class customerInformation extends AppCompatActivity {
         });
     }
     public void updateUI(){
-        textViewWeight.setText(custInfo.weight);
-        textViewFat.setText(custInfo.fat);
-        textViewMuscle.setText(custInfo.muscle);
-        //아래 3줄 주석 제거하고 위의 3줄 주석 처리하고 테스트
-/*
+
         addWeight.setText(custInfo.weight);
         addFat.setText(custInfo.fat);
         addMuscle.setText(custInfo.muscle);
-        */
     }
 }
